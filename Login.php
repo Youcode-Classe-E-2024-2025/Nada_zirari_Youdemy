@@ -8,10 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-black flex justify-center items-center h-screen">
+<body class="bg-blue-900 flex justify-center items-center h-screen">
 
     <!-- Formulaire de connexion -->
-    <div class="bg-blue-900 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-3xl font-bold text-center text-black mb-6">Bienvenue sur Youdemy</h2>
         <form action="login.php" method="POST" class="space-y-6">
             <!-- Email -->
@@ -45,7 +45,7 @@
 
             <!-- Lien d'inscription -->
             <div class="text-center mt-4">
-                <p class="text-sm text-black">Pas encore de compte ? <a href="register.php"
+                <p class="text-sm text-black">Pas encore de compte ? <a href="signup.php"
                         class="text-red hover:text-green-600">Inscrivez-vous</a></p>
             </div>
         </form>

@@ -55,44 +55,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - Youdemy</title>
-    <link rel="stylesheet" href="style.css"> <!-- Inclure un fichier CSS pour le style -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h2>Inscription</h2>
+<body class="bg-blue-900 flex justify-center items-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-semibold text-center text-blue-900 mb-6">Inscription</h2>
         
         <?php if (!empty($error)) : ?>
-            <div class="error"><?php echo $error; ?></div>
+            <div class="text-red-500 text-sm mb-4"><?php echo $error; ?></div>
         <?php endif; ?>
 
         <form method="POST" action="signup.php">
-            <div class="form-group">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" required>
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-600">Nom :</label>
+                <input type="text" id="name" name="name" class="mt-2 p-2 w-full border border-gray-300 rounded-md" required>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-600">Email :</label>
+                <input type="email" id="email" name="email" class="mt-2 p-2 w-full border border-gray-300 rounded-md" required>
             </div>
 
-            <div class="form-group">
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="password" required>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-600">Mot de passe :</label>
+                <input type="password" id="password" name="password" class="mt-2 p-2 w-full border border-gray-300 rounded-md" required>
             </div>
 
-            <div class="form-group">
-                <label for="role">Rôle :</label>
-                <select id="role" name="role" required>
+            <div class="mb-4">
+                <label for="role" class="block text-sm font-medium text-gray-600">Rôle :</label>
+                <select id="role" name="role" class="mt-2 p-2 w-full border border-gray-300 rounded-md" required>
                     <option value="student">Étudiant</option>
                     <option value="teacher">Enseignant</option>
                 </select>
             </div>
 
-            <button type="submit">S'inscrire</button>
+            <button type="submit" class="w-full bg-blue-900 text-white py-2 rounded-md hover:bg-green-500 transition duration-200">S'inscrire</button>
         </form>
 
-        <p>Vous avez déjà un compte ? <a href="login.php">Se connecter</a></p>
+        <p class="mt-4 text-sm text-gray-600">Vous avez déjà un compte ? <a href="login.php" class="text-green-500 hover:text-green-700">Se connecter</a></p>
     </div>
+
 </body>
 </html>
