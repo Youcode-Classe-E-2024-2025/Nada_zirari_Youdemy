@@ -28,8 +28,8 @@
             <a href="#" class="block px-4 py-2 rounded hover:bg-blue-500">Profil</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2 rounded hover:bg-blue-500">Déconnexion</a>
-          </li>
+            <a href="../logout.php" class="block px-4 py-2 bg-red-500 rounded hover:bg-green-500">Déconnexion</a>
+          
         </ul>
       </nav>
     </aside>

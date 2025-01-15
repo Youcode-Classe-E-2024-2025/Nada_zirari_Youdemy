@@ -29,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Rediriger l'utilisateur en fonction de son rôle
         if ($user['role'] == 'admin') {
-            header("Location: admin_dashboard.php"); // Page pour l'administrateur
+            header("Location: model/admin_dashboard.php"); // Page pour l'administrateur
         } elseif ($user['role'] == 'teacher') {
-            header("Location: teacher_dashboard.php"); // Page pour l'enseignant
+            header("Location: model/teacher_dashboard.php"); // Page pour l'enseignant
         } else {
-            header("Location: student_dashboard.php"); // Page pour l'étudiant
+            header("Location: model/student_dashboard.php"); // Page pour l'étudiant
         }
         exit();
     } else {
