@@ -12,6 +12,10 @@ CREATE TABLE users (
    
 );
 
+
+
+
+
 -- Table pour les cours
 CREATE TABLE courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,4 +28,17 @@ CREATE TABLE courses (
     -- created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     -- updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (teacher_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE TABLE tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+CREATE TABLE course_statistics (
+    course_id INT NOT NULL,
+    student_count INT DEFAULT 0,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
