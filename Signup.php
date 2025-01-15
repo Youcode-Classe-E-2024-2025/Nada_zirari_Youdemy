@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body class="bg-blue-900 flex justify-center items-center min-h-screen">
 
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-semibold text-center text-blue-900 mb-6">Inscription</h2>
+        <h2 class="text-2xl font-semibold text-center text-blue-500 mb-6">Inscription</h2>
         
         <?php if (!empty($error)) : ?>
             <div class="text-red-500 text-sm mb-4"><?php echo $error; ?></div>
@@ -83,14 +83,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="mb-4">
-                <label for="role" class="block text-sm font-medium text-gray-600">Rôle :</label>
+                <label for="role" class="block text-sm font-medium text-blue-600">Rôle :</label>
                 <select id="role" name="role" class="mt-2 p-2 w-full border border-gray-300 rounded-md" required>
                     <option value="student">Étudiant</option>
                     <option value="teacher">Enseignant</option>
                 </select>
             </div>
 
-            <button type="submit" class="w-full bg-blue-900 text-white py-2 rounded-md hover:bg-green-500 transition duration-200">S'inscrire</button>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-green-500 transition duration-200">S'inscrire</button>
         </form>
 
         <p class="mt-4 text-sm text-gray-600">Vous avez déjà un compte ? <a href="login.php" class="text-green-500 hover:text-green-700">Se connecter</a></p>

@@ -1,3 +1,50 @@
+<?php
+session_start();
+require_once 'config.php'; // Assurez-vous que votre fichier de configuration est bien inclus
+
+// Vérifier si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Récupérer les données du formulaire
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Connexion à la base de données
+    $database = Database::getInstance();
+    $conn = $database->getConnection();
+
+    // Préparer la requête pour récupérer l'utilisateur
+    $stmt = $conn->prepare("SELECT id, name, email, password, role FROM users WHERE email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Vérifier si l'utilisateur existe et si le mot de passe est correct
+    if ($user && password_verify($password, $user['password'])) {
+        // L'utilisateur est authentifié, enregistrer les informations dans la session
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['role'] = $user['role'];
+
+        // Rediriger l'utilisateur en fonction de son rôle
+        if ($user['role'] == 'admin') {
+            header("Location: admin_dashboard.php"); // Page pour l'administrateur
+        } elseif ($user['role'] == 'teacher') {
+            header("Location: teacher_dashboard.php"); // Page pour l'enseignant
+        } else {
+            header("Location: student_dashboard.php"); // Page pour l'étudiant
+        }
+        exit();
+    } else {
+        // Si les identifiants sont incorrects, rediriger avec un message d'erreur
+        header("Location: login.php?error=true");
+        exit();
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
