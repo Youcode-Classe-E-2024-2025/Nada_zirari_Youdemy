@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once 'config.php';
-require_once 'classes/Course.php';
-require_once 'classes/Auth.php';
+require_once '../config.php';
+require_once '../classes/Course.php';
+require_once '../classes/Auth.php';
 
 // Vérification de rôle
 Auth::checkRole('teacher');
