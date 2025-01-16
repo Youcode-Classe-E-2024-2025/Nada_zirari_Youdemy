@@ -43,3 +43,6 @@ CREATE TABLE course_statistics (
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 ALTER TABLE users MODIFY role ENUM('student', 'teacher', 'admin') NOT NULL;
+INSERT INTO users (name, email, password, role) 
+VALUES ('Admin', 'amin@gmail.com', 'hashed_password', 'admin');
+DESCRIBE users;

@@ -14,7 +14,7 @@ try {
     // Hachage du mot de passe
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Définir le rôle avant de lier les paramètres
+    // Définir le rôle
     $role = 'admin';
 
     // Préparer la requête d'insertion
@@ -29,6 +29,8 @@ try {
         echo "Administrateur ajouté avec succès.";
     } else {
         echo "Erreur lors de l'ajout de l'administrateur.";
+        // Affichage des erreurs SQL détaillées
+        print_r($stmt->errorInfo());
     }
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
