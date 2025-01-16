@@ -1,7 +1,7 @@
 <?php
 // Constantes pour la configuration de la base de données
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'youdemy'); // Nom de la base de données Youdemy
+define('DB_NAME', 'youdemy1'); // Nom de la base de données Youdemy
 define('DB_USER', 'root');    // Utilisateur de la base de données
 define('DB_PASS', '');        // Mot de passe de la base de données (si nécessaire)
 

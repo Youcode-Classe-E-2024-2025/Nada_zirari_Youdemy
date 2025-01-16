@@ -3,8 +3,9 @@ require_once 'config.php'; // Inclure la configuration
 
 // Données de l'administrateur
 $name = 'Admin';
-$email = 'admin@gmail.com';
+$email = 'nada@admin.com';
 $password = '123456'; // Mot de passe en clair
+$role = 'admin'; // Rôle de l'utilisateur
 
 try {
     // Obtenir la connexion à la base de données
@@ -14,24 +15,15 @@ try {
     // Hachage du mot de passe
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Définir le rôle
-    $role = 'admin';
-
-    // Préparer la requête d'insertion
+    // Préparer et exécuter la requête d'insertion
     $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (:name, :email, :password, :role)");
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $hashedPassword);
     $stmt->bindParam(':role', $role);
+    $stmt->execute();
 
-    // Exécuter la requête
-    if ($stmt->execute()) {
-        echo "Administrateur ajouté avec succès.";
-    } else {
-        echo "Erreur lors de l'ajout de l'administrateur.";
-        // Affichage des erreurs SQL détaillées
-        print_r($stmt->errorInfo());
-    }
+    echo "Administrateur ajouté avec succès.";
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

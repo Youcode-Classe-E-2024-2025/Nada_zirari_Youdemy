@@ -1,6 +1,6 @@
-CREATE DATABASE youdemy;
+CREATE DATABASE youdemy1;
 
-USE youdemy;
+USE youdemy1;
 
 -- Table pour les utilisateurs
 CREATE TABLE users (
@@ -8,7 +8,7 @@ CREATE TABLE users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role ENUM('student', 'teacher') NOT NULL
+    role ENUM('student','admin', 'teacher') NOT NULL
    
 );
 
@@ -29,6 +29,15 @@ CREATE TABLE courses (
     -- updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (teacher_id) REFERENCES users(id) ON DELETE CASCADE
 );
+CREATE TABLE enrollments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL, -- L'étudiant
+    course_id INT NOT NULL, -- Le cours
+    enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date d'inscription
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+);
+
 CREATE TABLE tags (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE
@@ -42,7 +51,9 @@ CREATE TABLE course_statistics (
     student_count INT DEFAULT 0,
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
-ALTER TABLE users MODIFY role ENUM('student', 'teacher', 'admin') NOT NULL;
-INSERT INTO users (name, email, password, role) 
-VALUES ('Admin', 'amin@gmail.com', 'hashed_password', 'admin');
-DESCRIBE users;
+
+INSERT INTO users (name, email, password, role) VALUES ('student', 'student1@gmail.com','123456','student');
+ALTER TABLE courses 
+ADD COLUMN category_id INT,
+ADD FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL;
+ALTER TABLE users ADD COLUMN status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending';
