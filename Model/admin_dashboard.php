@@ -127,57 +127,61 @@ try {
                 <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
             </form>
         </section>
-
-       <!-- Statistiques globales -->
+<!-- Statistiques globales -->
 <section class="bg-white p-6 rounded-lg shadow-lg">
     <h2 class="text-xl font-semibold mb-6 text-center">Statistiques globales</h2>
 
-    <!-- Nombre total de cours -->
-    <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-6">
-        <p class="text-lg font-semibold">Nombre total de cours :</p>
-        <p class="text-xl font-bold text-blue-600"><?= $totalCourses ?></p>
-    </div>
+    <!-- Conteneur Flex pour les cartes -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    <!-- Répartition par catégorie -->
-    <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-6">
-        <h3 class="text-lg font-semibold mb-2">Répartition par catégorie :</h3>
-        <ul class="list-disc pl-6 space-y-2">
-            <?php
-            foreach ($categories as $category) {
-                echo "<li class='text-gray-800'>{$category['name']}: <span class='font-semibold'>{$category['total']}</span> cours</li>";
-            }
-            ?>
-        </ul>
-    </div>
+        <!-- Nombre total de cours -->
+        <div class="bg-blue-100 p-4 rounded-lg shadow-md">
+            <p class="text-lg font-semibold">Nombre total de cours :</p>
+            <p class="text-xl font-bold text-blue-600"><?= $totalCourses ?></p>
+        </div>
 
-    <!-- Cours avec le plus d'étudiants -->
-    <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-6">
-        <h3 class="text-lg font-semibold mb-2">Cours avec le plus d'étudiants :</h3>
-        <?php
-        if ($mostPopularCourse !== false && isset($mostPopularCourse['title'], $mostPopularCourse['total_students'])) {
-            echo "<p class='text-gray-800'>{$mostPopularCourse['title']} (<span class='font-semibold'>{$mostPopularCourse['total_students']}</span> étudiants)</p>";
-        } else {
-            echo "<p class='text-red-500'>Impossible de récupérer les informations sur le cours le plus populaire.</p>";
-        }
-        ?>
-    </div>
-
-    <!-- Top 3 enseignants -->
-    <div class="bg-gray-100 p-4 rounded-lg shadow-md">
-        <h3 class="text-lg font-semibold mb-2">Top 3 enseignants :</h3>
-        <ol class="list-decimal pl-6 space-y-2">
-            <?php
-            if ($topTeachers !== false && count($topTeachers) > 0) {
-                foreach ($topTeachers as $teacher) {
-                    echo "<li class='text-gray-800'>{$teacher['name']} (<span class='font-semibold'>{$teacher['total_courses']}</span> cours)</li>";
+        <!-- Répartition par catégorie -->
+        <div class="bg-green-100 p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Répartition par catégorie :</h3>
+            <ul class="list-disc pl-6 space-y-2">
+                <?php
+                foreach ($categories as $category) {
+                    echo "<li class='text-gray-800'>{$category['name']}: <span class='font-semibold'>{$category['total']}</span> cours</li>";
                 }
+                ?>
+            </ul>
+        </div>
+
+        <!-- Cours avec le plus d'étudiants -->
+        <div class="bg-yellow-100 p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Cours avec le plus d'étudiants :</h3>
+            <?php
+            if ($mostPopularCourse !== false && isset($mostPopularCourse['title'], $mostPopularCourse['total_students'])) {
+                echo "<p class='text-gray-800'>{$mostPopularCourse['title']} (<span class='font-semibold'>{$mostPopularCourse['total_students']}</span> étudiants)</p>";
             } else {
-                echo "<li class='text-red-500'>Aucun enseignant trouvé.</li>";
+                echo "<p class='text-red-500'>Impossible de récupérer les informations sur le cours le plus populaire.</p>";
             }
             ?>
-        </ol>
+        </div>
+
+        <!-- Top 3 enseignants -->
+        <div class="bg-purple-100 p-4 rounded-lg shadow-md col-span-1 sm:col-span-2 lg:col-span-1">
+            <h3 class="text-lg font-semibold mb-2">Top 3 enseignants :</h3>
+            <ol class="list-decimal pl-6 space-y-2">
+                <?php
+                if ($topTeachers !== false && count($topTeachers) > 0) {
+                    foreach ($topTeachers as $teacher) {
+                        echo "<li class='text-gray-800'>{$teacher['name']} (<span class='font-semibold'>{$teacher['total_courses']}</span> cours)</li>";
+                    }
+                } else {
+                    echo "<li class='text-red-500'>Aucun enseignant trouvé.</li>";
+                }
+                ?>
+            </ol>
+        </div>
     </div>
 </section>
+
 
     </main>
 
