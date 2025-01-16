@@ -42,3 +42,4 @@ CREATE TABLE course_statistics (
     student_count INT DEFAULT 0,
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
+ALTER TABLE users MODIFY role ENUM('student', 'teacher', 'admin') NOT NULL;
