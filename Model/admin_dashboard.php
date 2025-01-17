@@ -118,14 +118,23 @@ try {
             </table>
         </section>
 
+        
         <!-- Gestion des contenus -->
         <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-xl font-semibold mb-4">Gestion des contenus</h2>
-            <form method="POST" action="add_tags.php" class="flex flex-col">
-                <label for="tags" class="mb-2">Ajouter des tags (séparés par des virgules) :</label>
-                <input type="text" id="tags" name="tags" required class="p-2 border border-gray-300 rounded mb-4">
-                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
-            </form>
+        <h2 class="text-xl font-semibold mb-4">Ajouter une catégorie</h2>
+        <form action="add_category.php" method="POST" class="flex flex-col">
+    <label for="category_name" class="mb-2">Nom de la catégorie :</label>
+    <input type="text" id="category_name" name="name" required class="p-2 border border-gray-300 rounded mb-4">
+    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
+</form>
+
+
+<form action="add_tags.php" method="POST" class="flex flex-col">
+    <label for="tags" class="mb-2">Ajouter des tags (séparés par des virgules) :</label>
+    <input type="text" id="tags" name="tags" required class="p-2 border border-gray-300 rounded mb-4">
+    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Ajouter</button>
+</form>
+
         </section>
 <!-- Statistiques globales -->
 <section class="bg-white p-6 rounded-lg shadow-lg">
