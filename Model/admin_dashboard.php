@@ -54,7 +54,7 @@ try {
     <main class="container mx-auto p-6">
         <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
             <h2 class="text-xl font-semibold mb-4">Validation des comptes enseignants</h2>
-            <form method="POST" action="validate_teacher.php">
+            <form method="POST" action="../validate_teacher.php">
                 <table class="w-full table-auto border-collapse">
                     <thead>
                         <tr class="bg-gray-100">
@@ -122,7 +122,7 @@ try {
         <!-- Gestion des contenus -->
         <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
         <h2 class="text-xl font-semibold mb-4">Ajouter une catégorie</h2>
-        <form action="add_category.php" method="POST" class="flex flex-col">
+        <form action="../add_category.php" method="POST" class="flex flex-col">
     <label for="category_name" class="mb-2">Nom de la catégorie :</label>
     <input type="text" id="category_name" name="name" required class="p-2 border border-gray-300 rounded mb-4">
     <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>

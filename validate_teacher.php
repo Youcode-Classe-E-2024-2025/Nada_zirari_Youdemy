@@ -1,5 +1,5 @@
 <?php
-require_once '../config.php';
+require_once 'config.php';
 
 session_start();
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } catch (PDOException $e) {
         $_SESSION['error'] = "Erreur lors de la mise à jour : " . $e->getMessage();
     }
-    header("Location: admin_dashboard.php");
+    header("Location: ../model/admin_dashboard.php");
     exit;
 }
 ?>

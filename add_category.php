@@ -1,5 +1,5 @@
 <?php
-require_once '../config.php';
+require_once 'config.php';
 
 session_start();
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $_SESSION['error'] = "Le nom de la catégorie est requis.";
     }
-    header("Location: admin_dashboard.php");
+    header("Location: model/admin_dashboard.php");
     exit;
 }
 ?>
