@@ -22,6 +22,21 @@ $stmt = $conn->prepare("SELECT * FROM courses WHERE teacher_id = :teacher_id");
 $stmt->bindParam(':teacher_id', $teacher_id);
 $stmt->execute();
 $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupérer le nombre de cours
+$stmtCoursesCount = $conn->prepare("SELECT COUNT(*) AS course_count FROM courses WHERE teacher_id = :teacher_id");
+$stmtCoursesCount->bindParam(':teacher_id', $teacherId);
+$stmtCoursesCount->execute();
+$courseCount = $stmtCoursesCount->fetch(PDO::FETCH_ASSOC)['course_count'];
+
+// Récupérer le nombre d'étudiants inscrits
+// Récupérer le nombre d'étudiants inscrits
+$stmtStudentsCount = $conn->prepare("SELECT COUNT(DISTINCT user_id) AS student_count FROM enrollments WHERE course_id IN (SELECT id FROM courses WHERE teacher_id = :teacher_id)");
+$stmtStudentsCount->bindParam(':teacher_id', $teacherId);
+$stmtStudentsCount->execute();
+$studentCount = $stmtStudentsCount->fetch(PDO::FETCH_ASSOC)['student_count'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +50,7 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body class="bg-gray-50 font-sans">
 
   <!-- Wrapper -->
-  <div class="min-h-screen flex flex-col">
+  <!-- <div class="min-h-screen flex flex-col"> -->
 
     <!-- Header -->
     <header class="bg-gray-800 text-white shadow-md">
@@ -43,7 +58,7 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h1 class="text-2xl font-bold">Youdemy</h1>
         <nav class="flex space-x-4">
           <a href="#" class="hover:text-gray-300">Accueil</a>
-          <a href="#" class="hover:text-gray-300">Mes cours</a>
+          <a href="#courses" class="hover:text-gray-300">Mes cours</a>
           <a href="#" class="hover:text-gray-300">Statistiques</a>
           <a href="../logout.php" class="bg-red-600 px-4 py-2 rounded hover:bg-green-700">Déconnexion</a>
         </nav>
@@ -59,37 +74,67 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </section>
 
       <!-- Actions Section -->
-      <section class="mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- <section class="mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> -->
         <!-- Ajouter un cours -->
-        <div class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
+        <!-- <div class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
           <h3 class="text-xl font-semibold text-gray-800 mb-4">Ajouter un cours</h3>
           <p class="text-gray-600 mb-6">Créez un nouveau cours avec des détails complets pour vos étudiants.</p>
           <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Ajouter</a>
-        </div>
+        </div> -->
 
         <!-- Mes cours -->
-        <div class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
+        <!-- <div class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
           <h3 class="text-xl font-semibold text-gray-800 mb-4">Mes cours</h3>
           <p class="text-gray-600 mb-6">Consultez et gérez les cours que vous avez créés.</p>
           <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir</a>
-        </div>
-
+        </div> -->
+<!-- </div> -->
         <!-- Statistiques -->
-        <div class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
+        <!-- <div class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
           <h3 class="text-xl font-semibold text-gray-800 mb-4">Statistiques</h3>
           <p class="text-gray-600 mb-6">Analysez les performances de vos cours et l'engagement des étudiants.</p>
           <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Consulter</a>
         </div>
-      </section>
+      </section> -->
+      <!-- Statistiques -->
+      <section id="stat"  class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
+      
+  <h3 class="text-xl font-semibold text-gray-800 mb-4">Statistiques</h3>
+  <p class="text-gray-600 mb-6">Analysez les performances de vos cours et l'engagement des étudiants.</p>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Nombre de cours -->
+    <div class="bg-blue-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+      <h4 class="text-2xl font-semibold mb-4">Nombre de cours</h4>
+      <p class="text-lg"><?= $courseCount ?></p>
+    </div>
+
+    <!-- Nombre d'étudiants inscrits -->
+    <div class="bg-green-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+      <h4 class="text-2xl font-semibold mb-4">Nombre d'étudiants inscrits</h4>
+      <p class="text-lg"><?= $studentCount ?></p>
+    </div>
+
+    <!-- Autres statistiques (ajoutez d'autres statistiques ici si nécessaire) -->
+    <div class="bg-yellow-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+      <h4 class="text-2xl font-semibold mb-4">Autre Statistique</h4>
+      <p class="text-lg">Données supplémentaires ici</p>
+    </div>
+  </div>
+
+  <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-6 inline-block">Consulter</a>
+
+</section>
+
 
       <!-- Liste des cours -->
          <!-- Liste des cours -->
-         <section class="mb-10">
+         <section id="courses" class="mb-10">
             <h3 class="text-2xl font-semibold text-gray-800 mb-4">Mes cours</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php foreach ($courses as $course): ?>
                     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/300x200" alt="Cours" class="w-full h-48 object-cover">
+                        <img src="../cours-en-ligne.png" alt="Cours" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h4 class="text-lg font-bold"><?= htmlspecialchars($course['title']) ?></h4>
                             <p class="text-gray-600 text-sm mb-4"><?= htmlspecialchars($course['description']) ?></p>
