@@ -15,10 +15,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = htmlspecialchars($_POST['content']);
     $category = htmlspecialchars($_POST['category']);
     $teacherId = $_SESSION['user_id'];  // ID de l'enseignant connecté
+    $tags = isset($_POST['tags']) ? $_POST['tags'] : []; // Tags sélectionnés
 
     // Création de l'objet Course
     $course = new Course();
-
+// Associer les tags au cours
+foreach ($tags as $tag_id) {
+    $stmtTag = $conn->prepare("INSERT INTO course_tags (course_id, tag_id) VALUES (:course_id, :tag_id)");
+    $stmtTag->bindParam(':course_id', $course_id);
+    $stmtTag->bindParam(':tag_id', $tag_id);
+    $stmtTag->execute();
+}
     // Ajouter le cours dans la base de données
     $success = $course->addCourse($teacherId, $title, $description, $content, $category);
 

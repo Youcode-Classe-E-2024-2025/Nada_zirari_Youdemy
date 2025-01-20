@@ -42,6 +42,19 @@ CREATE TABLE tags (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE
 );
+-- Insérer des tags dans la table tags
+INSERT INTO tags (name) VALUES
+('PHP'),
+('JavaScript'),
+('MySQL'),
+('HTML'),
+('CSS'),
+('Python'),
+('React'),
+('Node.js'),
+('Laravel'),
+('Vue.js');
+
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE

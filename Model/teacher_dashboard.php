@@ -15,6 +15,12 @@ $courses = $course->getCoursesByTeacher($teacherId);
 // Connexion à la base de données
 $database = Database::getInstance();
 $conn = $database->getConnection();
+// Récupérer les tags existants
+$stmtTags = $conn->prepare("SELECT * FROM tags");
+$stmtTags->execute();
+$tags = $stmtTags->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 // Récupérer les cours de l'enseignant connecté
 $teacher_id = $_SESSION['user_id'];
@@ -174,6 +180,22 @@ $studentCount = $stmtStudentsCount->fetch(PDO::FETCH_ASSOC)['student_count'];
                     <input type="text" id="category" name="category"
                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
+                <div>
+                  
+    <label for="tags" class="block text-sm font-medium text-gray-700">Tags</label>
+    <div class="mt-2 space-y-2">
+        <?php foreach ($tags as $tag): ?>
+            <div class="flex items-center">
+                <input type="checkbox" id="tag_<?= $tag['id'] ?>" name="tags[]" value="<?= $tag['id'] ?>"
+                       class="mr-2">
+                       <label for="tag_<?= $tag['id'] ?>" class="text-sm text-gray-700">
+    <?= isset($tag['name']) ? htmlspecialchars($tag['name']) : 'Tag non défini' ?>
+</label>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
                 <button type="submit"
                         class="w-full py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
                     Ajouter le cours
