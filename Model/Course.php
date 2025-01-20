@@ -43,4 +43,6 @@ class CourseModel {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
     }
+   
+
 }

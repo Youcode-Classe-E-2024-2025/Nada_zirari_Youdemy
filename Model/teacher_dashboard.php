@@ -108,7 +108,7 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
  <!-- Ajouter un cours -->
  <section class="mb-10 bg-white shadow-md rounded-lg p-6">
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Ajouter un cours</h3>
-            <form action="add_course.php" method="POST" class="space-y-4">
+            <form action="add_cours.php" method="POST" class="space-y-4">
                 <div>
                     <label for="title" class="block text-sm font-medium text-gray-700">Titre du cours</label>
                     <input type="text" id="title" name="title" required
