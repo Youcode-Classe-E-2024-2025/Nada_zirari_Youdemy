@@ -1,3 +1,35 @@
+
+<?php
+require_once 'config.php'; 
+require_once 'classes/course.php'; 
+
+// Inclut la classe Database
+// require_once 'Model/Course.php'; // Inclut le modèle des cours
+
+// Initialisation des variables
+$limit = 10;
+$page = isset($_GET['page']) ? max((int)$_GET['page'], 1) : 1;
+$offset = ($page - 1) * $limit;
+$keyword = isset($_GET['search']) ? htmlspecialchars(trim($_GET['search']), ENT_QUOTES, 'UTF-8') : '';
+
+// Initialisation de la connexion PDO
+$pdo = Database::getInstance()->getConnection();
+
+// Instanciation du modèle CourseModel
+$course = new course($pdo);
+
+// Récupérer les cours
+if (!empty($keyword)) {
+    $courses = $course->searchCourses($keyword, $limit, $offset);
+    $totalCourses = $course->countSearchResults($keyword);
+} else {
+    $courses = $course->getCourses($limit, $offset);
+    $totalCourses = $course->countAllCourses();
+}
+
+// Calculer le nombre total de pages
+$totalPages = ceil($totalCourses / $limit);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +40,26 @@
 </head>
 <body class="bg-gray-50">
   <!-- Header -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-3xl ml-60 font-bold text-blue-600">Youdemy</a>
-      <!-- <nav class="space-x-6">
-        <a href="#" class="text-gray-700 hover:text-blue-600">Courses</a>
-        <a href="#" class="text-gray-700 hover:text-blue-600">About Us</a>
-        <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
-        <a href="#" class="text-blue-600 font-semibold">Sign In</a>
-        <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</a>
-      </nav> -->
-    </div>
-  </header>
+  <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl font-bold">Catalogue des cours</h1>
+            <form method="GET" action="visiteur.php" class="mt-4 flex">
+                <input 
+                    type="text" 
+                    name="search" 
+                    placeholder="Rechercher un cours..." 
+                    value="<?= htmlspecialchars($keyword) ?>" 
+                    class="flex-grow p-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400"
+                >
+                <button 
+                    type="submit" 
+                    class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-r-md"
+                >
+                    Rechercher
+                </button>
+            </form>
+        </div>
+    </header>
 
   <!-- Hero Section -->
   <section class="bg-cover bg-center h-screen" style="background-image: url('https://via.placeholder.com/1920x1080');">
@@ -27,39 +67,50 @@
       <div class="text-white px-6">
         <h1 class="text-4xl md:text-6xl font-bold mb-4">Learn Anytime, Anywhere</h1>
         <p class="text-lg md:text-2xl mb-6">Join Youdemy and unlock your potential with thousands of online courses.</p>
-        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Visit US</a>
+        <a href="Signup.php" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">JOIN US</a>
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="py-16 bg-gray-100">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-8">Why Choose Youdemy?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="bg-white p-6 shadow rounded">
-          <img src="https://via.placeholder.com/100" alt="Feature 1" class="mx-auto mb-4">
-          <h3 class="text-xl font-semibold">Personalized Learning</h3>
-          <p class="text-gray-600">Tailored courses to suit your learning style.</p>
+ 
+    <main class="container mx-auto px-4 py-8">
+        <?php if (!empty($courses)): ?>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <?php foreach ($courses as $course): ?>
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <h2 class="text-lg font-semibold text-gray-700"><?= htmlspecialchars($course['title']) ?></h2>
+                        <p class="text-gray-600 mt-2"><?= htmlspecialchars(substr($course['description'], 0, 100)) ?>...</p>
+                        <a 
+                            href="course.php?id=<?= $course['id'] ?>" 
+                            class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+                        >
+                            Voir le cours
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <p class="text-center text-gray-600">Aucun cours trouvé.</p>
+        <?php endif; ?>
+        <div class="flex justify-center mt-8 space-x-4">
+            <?php if ($page > 1): ?>
+                <a 
+                    href="visiteur.php?page=<?= $page - 1 ?>&search=<?= urlencode($keyword) ?>" 
+                    class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md"
+                >
+                    Précédent
+                </a>
+            <?php endif; ?>
+            <?php if ($page < $totalPages): ?>
+                <a 
+                    href="visiteur.php?page=<?= $page + 1 ?>&search=<?= urlencode($keyword) ?>" 
+                    class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md"
+                >
+                    Suivant
+                </a>
+            <?php endif; ?>
         </div>
-        <div class="bg-white p-6 shadow rounded">
-          <img src="https://via.placeholder.com/100" alt="Feature 2" class="mx-auto mb-4">
-          <h3 class="text-xl font-semibold">Expert Instructors</h3>
-          <p class="text-gray-600">Learn from industry leaders and professionals.</p>
-        </div>
-        <div class="bg-white p-6 shadow rounded">
-          <img src="https://via.placeholder.com/100" alt="Feature 3" class="mx-auto mb-4">
-          <h3 class="text-xl font-semibold">Interactive Quizzes</h3>
-          <p class="text-gray-600">Engaging activities to test your knowledge.</p>
-        </div>
-        <div class="bg-white p-6 shadow rounded">
-          <img src="https://via.placeholder.com/100" alt="Feature 4" class="mx-auto mb-4">
-          <h3 class="text-xl font-semibold">Certifications</h3>
-          <p class="text-gray-600">Earn certificates to showcase your skills.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </main>
 <!-- 
   <!-- Popular Courses Section -->
   <!-- <section class="py-16">
