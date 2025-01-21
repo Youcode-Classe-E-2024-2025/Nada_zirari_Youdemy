@@ -1,48 +1,3 @@
-<?php
-session_start();
-require_once 'config.php'; // Assurez-vous que votre fichier de configuration est bien inclus
-
-// Vérifier si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Récupérer les données du formulaire
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Connexion à la base de données
-    $database = Database::getInstance();
-    $conn = $database->getConnection();
-
-    // Préparer la requête pour récupérer l'utilisateur
-    $stmt = $conn->prepare("SELECT id, name, email, password, role FROM users WHERE email = :email");
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Vérifier si l'utilisateur existe et si le mot de passe est correct
-    if ($user && password_verify($password, $user['password'])) {
-        // L'utilisateur est authentifié, enregistrer les informations dans la session
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_name'] = $user['name'];
-        $_SESSION['user_email'] = $user['email'];
-        $_SESSION['role'] = $user['role'];
-
-        // Rediriger l'utilisateur en fonction de son rôle
-        if ($user['role'] == 'admin') {
-            header("Location: model/admin_dashboard.php"); // Page pour l'administrateur
-        } elseif ($user['role'] == 'teacher') {
-            header("Location: model/teacher_dashboard.php"); // Page pour l'enseignant
-        } else {
-            header("Location: model/student_dashboard.php"); // Page pour l'étudiant
-        }
-        exit();
-    } else {
-        // Si les identifiants sont incorrects, rediriger avec un message d'erreur
-        header("Location: login.php?error=true");
-        exit();
-    }
-}
-?>
 
 
 <!DOCTYPE html>
@@ -60,44 +15,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Formulaire de connexion -->
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-3xl font-bold text-center text-black mb-6">Bienvenue sur Youdemy</h2>
-        <form action="login.php" method="POST" class="space-y-6">
-            <!-- Email -->
-            <div>
-                <label for="email" class="block text-sm font-medium text-black">Email</label>
-                <input type="email" id="email" name="email" required
-                    class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-900 focus:outline-none" />
-            </div>
+        <form id="loginForm" action="../controller/loginController.php" method="POST" onsubmit="return validateLoginForm()">
+                    <div class="mb-4">
+                        <label for="email" class="block text-black">Email:</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 mt-1 border border-1 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800" style="border-color:#1c4930" placeholder="Email" required>
+                        <span id="emailError" class="text-red-500 text-sm"><?= $errors['email'] ?? '' ?></span>
+                    </div>
 
-            <!-- Mot de passe -->
-            <div>
-                <label for="password" class="block text-sm font-medium text-black">Mot de passe</label>
-                <input type="password" id="password" name="password" required
-                    class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-900 focus:outline-none" />
-            </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-black">Mot de passe:</label>
+                        <input type="password" id="password" name="password" class="w-full p-3 mt-1 border border-1 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800" style="border-color:#1c4930" placeholder="Mot de passe" required>
+                        <span id="passwordError" class="text-red-500 text-sm"><?= $errors['password'] ?? '' ?></span>
+                    </div>
 
-            <!-- Erreur de connexion -->
-            <?php if (isset($_GET['error'])): ?>
-            <div class="text-red-500 text-sm">
-                <p>Identifiants incorrects. Veuillez réessayer.</p>
-            </div>
-            <?php endif; ?>
-
-            <!-- Bouton de connexion -->
-            <div>
-                <button type="submit"
-                    class="w-full py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-blue-900">
-                    Se connecter
-                </button>
-            </div>
-
-            <!-- Lien d'inscription -->
-            <div class="text-center mt-4">
-                <p class="text-sm text-black">Pas encore de compte ? <a href="signup.php"
-                        class="text-red hover:text-green-600">Inscrivez-vous</a></p>
-            </div>
-        </form>
+                    <div class="mt-6">
+                        <button type="submit" class="w-full py-3 bg-sky-700 text-white rounded-md hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-green-800" style="background-color:#1c4933;">
+                            Se connecter
+                        </button>
+                    </div>
+                    <div class="flex justify-center text-center text-black gap-2 mt-4">  
+                       <p>Vous n'avez pas de compte ?</p>
+                       <a href="register.php"style="color:#1c4930;">S'inscrire</a>
+                    </div>
+                </form>
     </div>
+    <script>
+    function validateLoginForm() {
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let valid = true;
 
+        // Réinitialiser les messages d'erreur
+        document.getElementById('emailError').innerText = '';
+        document.getElementById('passwordError').innerText = '';
+
+        // Vérification de l'email
+        if (email === '') {
+            document.getElementById('emailError').innerText = "L'email est requis.";
+            valid = false;
+        }
+
+        // Vérification du mot de passe
+        if (password === '') {
+            document.getElementById('passwordError').innerText = "Le mot de passe est requis.";
+            valid = false;
+        }
+
+        return valid;
+    }
+</script>
 </body>
 
 </html>
