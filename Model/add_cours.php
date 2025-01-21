@@ -6,7 +6,8 @@ require_once '../classes/Auth.php';
 
 // Vérification du rôle de l'utilisateur (enseignant)
 Auth::checkRole('teacher');
-
+$database = Database::getInstance();
+$conn = $database->getConnection();
 // Vérification de la méthode POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire

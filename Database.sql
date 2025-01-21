@@ -1,6 +1,6 @@
-CREATE DATABASE youdemy1;
+CREATE DATABASE youdemy2;
 
-USE youdemy1;
+USE youdemy2;
 
 -- Table pour les utilisateurs
 CREATE TABLE users (
