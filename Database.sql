@@ -71,3 +71,4 @@ ADD COLUMN category_id INT,
 ADD FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL;
 ALTER TABLE users ADD COLUMN status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending';
 ALTER TABLE courses ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+INSERT INTO categories (name) VALUES ('Dévellopement');

@@ -45,7 +45,7 @@ try {
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-semibold">Tableau de bord Administrateur</h1>
             <nav>
-                <a href="logout.php" class="text-white hover:underline">Déconnexion</a>
+                <a href="../logout.php" class="text-white hover:underline">Déconnexion</a>
             </nav>
         </div>
     </header>
