@@ -60,7 +60,7 @@ $totalPages = ceil($totalCours / $limit);
     <div class="container mx-auto px-4 py-4 mt-24">
         <form method="GET" action="Cours.php">
             <input type="text" name="search" class="p-2 border rounded w-[30%]" placeholder="Rechercher un cours par titre..." value="<?php echo htmlspecialchars($searchTerm); ?>">
-            <button type="submit" class="p-2 ml-2 text-white rounded" style="background-color:#1c4933;">Rechercher</button>
+            <button type="submit" class="p-2 ml-2 text-white rounded" style="background-color:#833a62;">Rechercher</button>
         </form>
     </div>
 
@@ -72,7 +72,7 @@ $totalPages = ceil($totalCours / $limit);
                     <a>
                         <img class="rounded-t-lg" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="" />
                     </a>
-                    <div class="p-5">
+                    <div class="p-8">
                         <a>
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:#24508c"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
                         </a>

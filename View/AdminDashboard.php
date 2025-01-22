@@ -87,55 +87,28 @@ $resultats5 = $stmt5->fetchAll();
 <body class="bg-gray-100">
 
     <!-- En-tête -->
-    <header class="bg-gray-800 text-white p-6">
+    <header class="bg-gray-900 text-white p-6">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-semibold">Tableau de bord Administrateur</h1>
             <nav>
-                <a href="logout.php" class="text-white hover:underline">Déconnexion</a>
+                <a href="deconnexion.php" class="text-white hover:underline">Déconnexion</a>
             </nav>
         </div>
 
     </header>
- <nav aria-label="menu nav" class="bg-gray-800 p-1 md:pt-1  px-1 mt-0 h-auto fixed w-full z-20 top-0">
-        <div class="flex justify-between">
-            <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
-                <a href="#" aria-label="Home">
-                    <span class="text-xl pl-2"><img src="../assets/images/logoB.png" alt="Logo" class="h-12 w-12 ml-2 pb-4"></span>
-                </a>
-            </div>
-            <div class="flex w-full pt-2 content-center justify-end md:w-1/3 md:justify-end">
-                <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
-                    <li class="flex-1 md:flex-none md:mr-3">
-                        <a class="inline-block py-2 px-4 text-white no-underline" href="#">Active</a>
-                    </li>
-                    <li class="flex-1 md:flex-none md:mr-3">
-                        <div class="relative inline-block">
-                            <button onclick="toggleDD('myDropdown')" class="drop-button text-white py-2 px-2"> <span class="pr-2"><i class="em em-robot_face"></i></span> Hi, Admin <svg class="h-3 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg></button>
-                            <div id="myDropdown" class="dropdownlist absolute bg-gray-800 text-white right-0 mt-3 p-3 overflow-auto z-30 invisible">
-                                <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i> Settings</a>
-                                <div class="border border-gray-800"></div>
-                                <a href="deconnexion.php" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
+
 
 <main>
     <div class="flex flex-col md:flex-row">
         <nav aria-label="alternative nav">
-            <div class="rounded-tr-3xl bg-gray-800 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
-                <div class="md:mt-20 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
+            <div class="rounded-tr-3xl bg-gray-500 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
+                <div class="md:mt-20 md:w-48 md:fixed md:left-0 md:top-10 content-center md:content-start text-left justify-between">
                     <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
-                        <li class="mr-3 flex-1">
+                        <!-- <li class="mr-3 flex-1">
                             <a href="#" onclick="showSection('analytics')" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
                                 <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Analytics</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="mr-3 flex-1">
                             <a href="#" onclick="showSection('cours')" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                                 <i class="fa-solid fa-book pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Cours</span>
@@ -169,8 +142,8 @@ $resultats5 = $stmt5->fetchAll();
         <!-- Analytics Section -->
         <section id="analytics" class="section">
             <div id="main" class="main-content flex-1 bg-gray-100 ml-8 md:mt-2 pb-24 md:pb-5" style="margin-top:40px ; min-width:100%;">
-                <div class="pt-3" style="background-color: #dadfdc;">
-                    <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-green-900 to-gray-800 p-4 shadow text-2xl text-white">
+                <div class="pt-3" style="background-color:rgb(93, 14, 51);">
+                    <div class=" bg-pink-900 p-4 shadow text-2xl text-white">
                         <h1 class="font-bold pl-2">Analytics</h1>
                     </div>
                 </div>
@@ -178,10 +151,10 @@ $resultats5 = $stmt5->fetchAll();
                 <div class="flex flex-wrap">
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Metric Card-->
-                        <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
+                        <div class="bg-bg-pink-900 border-b-4 border-black rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
-                                    <div class="rounded-full p-5 bg-green-600"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
+                                    <div class="rounded-full p-5 bg-rgb(100, 43, 66)"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
                                     <h2 class="font-bold uppercase text-gray-600">3 top enseignant</h2>
@@ -191,7 +164,7 @@ $resultats5 = $stmt5->fetchAll();
                                         // Afficher les informations de chaque enseignant
                                            echo '-' . $row2['user_name'];
                                         }?>
-                                     <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
+                                     <span class="text-pin-500"><i class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +172,7 @@ $resultats5 = $stmt5->fetchAll();
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Metric Card-->
-                        <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
+                        <div class="bg-pink-200  border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
                                     <div class="rounded-full p-5 bg-pink-600"><i class="fas fa-users fa-2x fa-inverse"></i></div>
@@ -215,7 +188,7 @@ $resultats5 = $stmt5->fetchAll();
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-5">
                         <!--Metric Card-->
-                        <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
+                        <div class="bg-white-900 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink">
                                     <div class="rounded-full p-3 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
@@ -242,7 +215,7 @@ $resultats5 = $stmt5->fetchAll();
         <section id="cours" class="section hidden w-full">
             <div id="main" class="mx-4 main-content flex-1 bg-gray-100 ml-8 md:mt-2 pb-24 md:pb-5" style="margin-top:40px;">
                 <div class="pt-3" style="background-color: #dadfdc;">
-                    <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-green-900 to-gray-800 p-4 shadow text-2xl text-white">
+                    <div class="rounded-tl-3xl rounded-tr-3xl bg-pink-900 p-4 shadow text-2xl text-white">
                         <h1 class="font-bold pl-2">Cours</h1>
                     </div>
                 </div>
@@ -288,7 +261,7 @@ $resultats5 = $stmt5->fetchAll();
         <section id="professor" class="section hidden w-full">
             <div id="main" class="mx-4 main-content flex-1 bg-gray-100 ml-8 md:mt-2 pb-24 md:pb-5" style="margin-top:40px;">
                 <div class="pt-3" style="background-color: #dadfdc;">
-                    <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-green-900 to-gray-800 p-4 shadow text-2xl text-white">
+                    <div class="rounded-tl-3xl rounded-tr-3xl bg-pink-900 p-4 shadow text-2xl text-white">
                         <h1 class="font-bold pl-2">Professor</h1>
                     </div>
                 </div>
@@ -316,12 +289,12 @@ $resultats5 = $stmt5->fetchAll();
                                             <form method="POST" action="../controller/confirmationUser.php" class="inline ml-2">
                                                    <input type="hidden" name="user_id" value="<?php echo $prof['id_user']; ?>" />
                                                    <button type="submit" name="changer" style="background-color:rgb(185, 212, 243);" onclick="return confirm('Êtes-vous sûr de vouloir changer le statut de cet utilisateur ?')"
-                                                    class="text-white py-2 px-3 rounded hover:bg-red-600"><i class="fa-solid fa-user-check"></i></button>
+                                                    class="text-white py-2 px-3 rounded hover:bg-red-600">edit</i></button>
                                             </form>
                                             <form method="POST" action="../controller/supprimerProf.php" class="inline ml-2">
                                                     <input type="hidden" name="user_id" value="<?php echo $prof['id_user']; ?>" />
                                                     <button type="submit" name="supprimer" style="background-color:rgb(185, 212, 243);"  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')"
-                                                     class="text-white py-2 px-3 rounded hover:bg-red-600"><i class="fa-solid fa-trash"></i></button>
+                                                     class="text-white py-2 px-3 rounded hover:bg-red-600">supp</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -339,7 +312,7 @@ $resultats5 = $stmt5->fetchAll();
         <section  id="user" class="section hidden w-full">
             <div id="main" class="mx-4 main-content flex-1 bg-gray-100 ml-8 md:mt-2 pb-24 md:pb-5" style="margin-top:40px;">
                 <div class="pt-3" style="background-color: #dadfdc;">
-                    <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-green-900 to-gray-800 p-4 shadow text-2xl text-white">
+                    <div class="rounded-tl-3xl rounded-tr-3xl bg-pink-900  p-4 shadow text-2xl text-white">
                         <h1 class="font-bold pl-2">Users</h1>
                     </div>
                 </div>
@@ -370,12 +343,12 @@ $resultats5 = $stmt5->fetchAll();
                                             <form method="POST" action="../controller/activationUser.php" class="inline ml-2">
                                                    <input type="hidden" name="user_id" value="<?php echo $user['id_user']; ?>" />
                                                    <button type="submit" name="changer" style="background-color:rgb(185, 212, 243);" onclick="return confirm('Êtes-vous sûr de vouloir de déactiver ou activer cet utilisateur ?')"
-                                                    class="text-white py-2 px-3 rounded hover:bg-red-600">Active</button>
+                                                    class="text-white py-2 px-3 rounded hover:bg-red-600">Active/desactive</button>
                                             </form>
                                             <form method="POST" action="../controller/supprimerUser.php" class="inline ml-2">
                                                     <input type="hidden" name="user_id" value="<?php echo $user['id_user']; ?>" />
                                                     <button type="submit" name="supprimer" style="background-color:rgb(185, 212, 243);" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')"
-                                                     class="text-white py-2 px-3 rounded hover:bg-red-600"><i class="fa-solid fa-trash"></i></button>
+                                                     class="text-white py-2 px-3 rounded hover:bg-red-600">supp</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -393,7 +366,7 @@ $resultats5 = $stmt5->fetchAll();
         <section id="tags" class="section hidden w-full">
                 <div id="main" class="mx-4 main-content flex-1 bg-gray-100 ml-8 md:mt-2 pb-24 md:pb-5" style="margin-top:40px;">
                     <div class="pt-3" style="background-color: #dadfdc;">
-                        <div class="flex justify-between rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-green-900 to-gray-800 p-4 shadow text-2xl text-white">
+                        <div class="flex justify-between rounded-tl-3xl rounded-tr-3xl bg-pink-900 p-4 shadow text-2xl text-white">
                             <h1 class="font-bold pl-2">Tags</h1>
                             <button class="pl-2 bg-black">Ajouter tags</button>
                         </div>
@@ -431,7 +404,7 @@ $resultats5 = $stmt5->fetchAll();
          <section i id="categorise" class="section hidden w-full">
                 <div id="main" class="mx-4 main-content flex-1 bg-gray-100 ml-8 md:mt-2 pb-24 md:pb-5" style="margin-top:40px;">
                     <div class="pt-3" style="background-color: #dadfdc;">
-                        <div class="flex justify-between rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-green-900 to-gray-800 p-4 shadow text-2xl text-white">
+                        <div class="flex justify-between rounded-tl-3xl rounded-tr-3xl bg-pink-900 p-4 shadow text-2xl text-white">
                             <h1 class="font-bold pl-2">Categories</h1>
                             <button class="pl-2 bg-black">Ajouter categorie</button>
                         </div>
@@ -505,6 +478,26 @@ document.getElementById('submit2').addEventListener('click', function (event) {
     document.getElementById('categories-hidden').value = JSON.stringify(categories);
 });
 
+     // Fonction pour afficher la section correspondante
+     function showSection(section) {
+        // Masquer toutes les sections
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(function (sec) {
+            sec.classList.add('hidden');
+        });
+
+        // Afficher la section demandée
+        const sectionToShow = document.getElementById(section);
+        if (sectionToShow) {
+            sectionToShow.classList.remove('hidden');
+        }
+    }
+
+    // Attendez que le DOM soit complètement chargé avant d'exécuter le script
+    document.addEventListener('DOMContentLoaded', function () {
+        // Afficher la section Analytics par défaut après le chargement de la page
+        showSection('analytics');
+    });
 </script>
 
 <script>
@@ -514,22 +507,22 @@ document.getElementById('submit2').addEventListener('click', function (event) {
     var barColors = ['blue'];
 
     // Affichage du graphique en camembert (pie chart)
-    new Chart("pieChart", {
-        type: "pie",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "Nombre total des cours"
-            }
-        }
-    });
+    // new Chart("pieChart", {
+    //     type: "pie",
+    //     data: {
+    //         labels: xValues,
+    //         datasets: [{
+    //             backgroundColor: barColors,
+    //             data: yValues
+    //         }]
+    //     },
+    //     options: {
+    //         title: {
+    //             display: true,
+    //             text: "Nombre total des cours"
+    //         }
+    //     }
+    // });
 
    
 </script>

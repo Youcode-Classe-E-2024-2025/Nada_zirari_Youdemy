@@ -17,7 +17,13 @@ ADD COLUMN status ENUM('activer', 'désactiver') NOT NULL DEFAULT 'désactiver';
 UPDATE user
 SET user_role = 'Admin'
 WHERE id_user = 25;
+UPDATE user
+SET user_role = 'Enseignant'
+WHERE id_user = 5;
 
+UPDATE user
+SET user_role = 'Etudiant'
+WHERE id_user = 3;
 -- Table des cours
 CREATE TABLE cours (
     id_cours INT PRIMARY KEY AUTO_INCREMENT,
@@ -41,6 +47,13 @@ CREATE TABLE cours (
         id_tags INT  PRIMARY KEY AUTO_INCREMENT,
         name_tags VARCHAR(100) NOT NULL UNIQUE
     );
+-- Insertion d'une catégorie
+INSERT INTO categories (name_categorie) 
+VALUES ('Marketnig');
+
+-- Insertion d'un tag
+INSERT INTO tags (name_tags) 
+VALUES ('JAVA');
 
 -- Table many-to-many entre les cours et les tags
 CREATE TABLE cours_tags (

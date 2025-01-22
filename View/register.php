@@ -58,7 +58,7 @@ $role = isset($_GET['role']) ? $_GET['role'] : null;
                     </div>
                     <!-- Bouton d'inscription -->
                     <div class="mt-4">
-                        <button type="submit" class="w-full py-3 bg-sky-700 text-white font-bold rounded-md hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-green-800" style="background-color:#1c4933;">
+                        <button type="submit" class="w-full py-3 bg-sky-700 text-white font-bold rounded-md hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-green-800" style="background-color:#833a62;">
                             S'inscrire
                         </button>
                     </div>

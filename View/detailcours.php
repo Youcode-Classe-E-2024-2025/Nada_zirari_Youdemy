@@ -1,6 +1,6 @@
 <?php
 // Inclure le fichier de connexion à la base de données et les classes de cours
-require 'vendor/erusev/parsedown/Parsedown.php';
+// require 'vendor/erusev/parsedown/Parsedown.php';
 
 require_once '../config/db.php';
 require_once '../model/cours.php';
@@ -25,10 +25,10 @@ if (isset($_GET['id_cour'])) {
 
     // Si le contenu est de type Markdown, le convertir en HTML
     if ($content_type === 'markdown') {
-        $parsedown = new Parsedown();
-        // Convertir le contenu markdown en HTML
-        $course['content_cours'] = $parsedown->text($course['content_cours']);
+        // Ne pas convertir en HTML, afficher directement le contenu brut
+        $course['content_cours'] = htmlspecialchars($course['content_cours']); // Optionnel, pour éviter les risques XSS si nécessaire
     }
+    
 
     $stmt = $pdo->prepare('
     SELECT t.name_tags
@@ -83,7 +83,7 @@ if (isset($_GET['id_cour'])) {
 <body>
     <nav class="navbar">
         <div class="flex items-center">
-            <img src="../assets/images/logo.png" alt="Logo" class="w-12">
+           YOUDEMY
         </div>
         <div class="space-x-6 items-center">
         <a href="teacherInterface.php" class="text-center font-bold hover:text-gray-400" style="color:#1c4930">Retour aux cours</a>

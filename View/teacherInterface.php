@@ -1,13 +1,13 @@
 <?php
 // Inclure le fichier de connexion à la base de données et les classes de cours
 require_once '../config/db.php';
-require_once '../model/cours.php'; // Assure-toi d'inclure ce fichier
+require_once '../model/cours.php'; //
 session_start();
 if(!isset($_SESSION['user_id'])){
     echo "vous devez etre connecter";
     exit;
 }
-$id_user = $_SESSION['user_id'];  // Récupérer l'ID de l'utilisateur (professeur)
+$id_user = $_SESSION['user_id'];  // Récupérer l'ID de (professeur)
 
 // Récupérer tous les cours depuis la base de données
 $stmt = $pdo->prepare("SELECT * FROM cours WHERE id_user = ?");
@@ -95,43 +95,43 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
             cursor: pointer;
         }
 
-        /* Style de la barre de navigation */
         .navbar {
-            background-color:rgb(255, 255, 255);
-            padding: 1rem;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    background-color: rgb(255, 255, 255); /* Fond blanc */
+    padding: 1rem;
+    color: black; /* Changer la couleur du texte */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 16px;
-        }
+.navbar a {
+    color: black; /* Couleur des liens en noir */
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
 
-        .navbar a:hover {
-            color: #f0a500;
-        }
+.navbar a:hover {
+    color: #f0a500; /* Couleur hover */
+}
+
     </style>
 </head>
 <body>
     <!-- Barre de navigation -->
     <nav class="navbar">
         <div class="flex items-center">
-            <img src="../assets/images/logo.png" alt="Logo" class="w-12">
+           HELLO TEACHER ! WELCOME TO YOUDEMY
         </div>
         <div class="space-x-6 items-center">
-            <i class="fa-duotone fa-solid fa-gear gear-icon" style="color:#1c4933;font-size:25px;" onclick="toggleMenu()"></i>
+            <i class="fa-duotone fa-solid fa-gear gear-icon" style="color:#833a62;font-size:25px;" onclick="toggleMenu()"></i>
             <div class="menu" id="menu">
-                <a onclick="ajouterCour()" class="text-center" style="color:#1c4933">Ajouter cours</a>
-                <a onclick="associerTag()" class="text-center" style="color:#1c4933">Associer tag</a>
-                <a href="deconnexion.php" class="text-center hover:text-gray-400" style="color:#1c4933">log out</a>
+                <a onclick="ajouterCour()" class="text-center" style="color:#833a62">Ajouter cours</a>
+                <a onclick="associerTag()" class="text-center" style="color:#833a62">Associer tag</a>
+                <a href="deconnexion.php" class="text-center hover:text-gray-400" style="color:#833a62">log out</a>
             </div>
         </div>
     </nav>
@@ -139,9 +139,9 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Contenu des cours -->
     <div class="container px-4">
         <div class="flex justify-between items-center">
-            <h2 class="text-3xl font-bold mb-4" style="color:#1c4933">Mes cours</h2>
+            <h2 class="text-3xl font-bold mb-4" style="color:#833a62">Mes cours</h2>
             <div class="flex justify-center gap-5 my-4">
-                <a href="statisticsProf.php" style="color: #dadfdc ;background-color:#1c4933;" class="text-white font-bold py-2 px-3 rounded hover:bg-red-600">Statistiques</a>
+                <a href="statisticsProf.php" style="color: #dadfdc ;background-color:#833a62;" class="text-white font-bold py-2 px-3 rounded hover:bg-red-600">Statistiques</a>
             </div>
         </div>
 
@@ -155,19 +155,19 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </a>
                         <div class="p-5">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:#1c4933"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:#833a62"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
                             </a>
                             <p class="mb-3 font-bold text-gray-700 dark:text-gray-400"><?php echo htmlspecialchars($course['desc_cours']); ?></p>
                             <form method="POST" action="modifier_cours.php?id_cour=<?php echo $course['id_cours']; ?>" class="inline ml-2">
                                 <input type="hidden" name="cours_id" value="<?php echo $course['id_cours']; ?>" />
-                                <button type="submit" name="modifier" style="color: #1c4933 ;background-color:#dadfdc;" class="text-white py-2 px-3 rounded hover:bg-yellow-600"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="submit" name="modifier" style="color: #833a62 ;background-color:#dadfdc;" class="text-white py-2 px-3 rounded hover:bg-yellow-600"><i class="fa-solid fa-pen-to-square"></i></button>
                             </form>
                             <form method="POST" action="../controller/supprimer_cours.php" class="inline ml-2">
                                 <input type="hidden" name="cours_id" value="<?php echo $course['id_cours']; ?>" />
-                                <button type="submit" name="supprimer" style="color: #1c4933 ;background-color:#dadfdc;" class="text-white py-2 px-3 rounded hover:bg-red-600"><i class="fa-solid fa-trash"></i></button>
+                                <button type="submit" name="supprimer" style="color: #833a62 ;background-color:#dadfdc;" class="text-white py-2 px-3 rounded hover:bg-red-600"><i class="fa-solid fa-trash"></i></button>
                             </form>
                             <form class="inline ml-1">
-                               <a href="detailCours.php?id_cour=<?php echo $course['id_cours']; ?>" style="color: #1c4933 ;background-color:#dadfdc;"  class="text-white font-bold p-2 px-2 rounded hover:bg-red-600 w-24 h-24">Voir détail</a>
+                               <a href="detailCours.php?id_cour=<?php echo $course['id_cours']; ?>" style="color: #833a62 ;background-color:#dadfdc;"  class="text-white font-bold p-2 px-2 rounded hover:bg-red-600 w-24 h-24"> détail</a>
                             </form>
                         </div>
                     </div>
@@ -177,8 +177,8 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Modal pour ajouter un cours -->
         <div class="hidden fixed inset-0 flex justify-center items-center  bg-opacity-50 z-50 mt-12" id="modal">
-           <div class="bg-white rounded-lg p-8 shadow-lg modal-content" style="width:80%;background-color:#dadfdc;border:2px solid #1c4933; box-shadow: 0 4px 12px rgba(127, 143, 125, 0.62);" >
-             <h1 class="text-2xl font-bold text-center mb-4 " style="color:#1c4933;">Ajouter un cours</h1>
+           <div class="bg-white rounded-lg p-8 shadow-lg modal-content" style="width:80%;background-color:#dadfdc;border:2px solid #833a62; box-shadow: 0 4px 12px rgba(127, 143, 125, 0.62);" >
+             <h1 class="text-2xl font-bold text-center mb-4 " style="color:#833a62;">Ajouter un cours</h1>
              <form id="courseForm" action="../controller/courController.php" method="POST" enctype="multipart/form-data">
                  <div class="mb-4">
                      <label for="title" class="block text-sm font-bold text-gray-700">Titre :</label>
@@ -205,8 +205,8 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  <div class="mb-4">
                      <label for="content" class="block text-sm font-bold text-gray-700">Contenu :</label>
                      <div class="flex space-x-4 mt-2">
-                         <button type="button" id="markdownButton" class="px-4 py-2 w-full text-white rounded-md hover:bg-indigo-700 focus:outline-none" style="background-color:#1c4933;">Saisir du Markdown</button>
-                         <button type="button" id="videoButton" class="px-4 py-2 w-full text-white rounded-md hover:bg-green-700 focus:outline-none" style="background-color:#1c4933;">Importer une vidéo</button>
+                         <button type="button" id="markdownButton" class="px-4 py-2 w-full text-white rounded-md hover:bg-indigo-700 focus:outline-none" style="background-color:#833a62;">Saisir du Markdown</button>
+                         <button type="button" id="videoButton" class="px-4 py-2 w-full text-white rounded-md hover:bg-green-700 focus:outline-none" style="background-color:#833a62;">Importer une vidéo</button>
                      </div>
                  </div>
                  <div id="markdownContainer" class="hidden mb-4">
@@ -218,7 +218,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  </div>
          
                  <div class="flex justify-center  mt-4">
-                     <button type="submit" class="px-6 w-full font-bold py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" style="background-color:#1c4933;">Ajouter le cours</button>
+                     <button type="submit" class="px-6 w-full font-bold py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" style="background-color:#833a62;">Ajouter le cours</button>
             </div>
            </form>
          </div>
@@ -226,8 +226,8 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Modal pour associer des tag à un cours -->
         <div class="hidden fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50 mt-10" id="modal2">
-          <div class="bg-white rounded-lg p-8 w-96 shadow-lg modal-content" style="width:80%;background-color:#dadfdc;border:2px solid #1c4933; box-shadow: 0 4px 12px rgba(127, 143, 125, 0.62);">
-            <h1 class="text-2xl font-bold text-center mb-4" style="color:#1c4933;">Associer des tags</h1>
+          <div class="bg-white rounded-lg p-8 w-96 shadow-lg modal-content" style="width:80%;background-color:#dadfdc;border:2px solid #833a62; box-shadow: 0 4px 12px rgba(127, 143, 125, 0.62);">
+            <h1 class="text-2xl font-bold text-center mb-4" style="color:#833a62;">Associer des tags</h1>
             <form id="courseForm" action="../controller/associerTagCours.php" method="POST" enctype="multipart/form-data">
               
               <!-- Section Catégorie avec scroll -->
@@ -255,7 +255,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
               </div>
               <div class="flex justify-center mt-4">
-                <button type="submit" class="px-6 w-full py-2 font-bold text-white rounded-md hover:bg-blue-700 focus:outline-none" style="background-color:#1c4933;">Associer des tags</button>
+                <button type="submit" class="px-6 w-full py-2 font-bold text-white rounded-md hover:bg-blue-700 focus:outline-none" style="background-color:#833a62;">Associer des tags</button>
               </div>
             </form>
           </div>
@@ -332,6 +332,40 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 event.preventDefault(); // Empêcher l'envoi du formulaire
             }
         });
+    </script>
+     <script>
+        // Fonction pour envoyer les catégories au serveur
+        function ajouterCategories() {
+            // Récupérer les catégories sélectionnées
+            const categories = [];
+            const categoryInputs = document.querySelectorAll('input[name="categories[]"]:checked');
+            categoryInputs.forEach(input => {
+                categories.push({ value: input.value });
+            });
+
+            // Vérifier si des catégories ont été sélectionnées
+            if (categories.length === 0) {
+                alert("Veuillez sélectionner au moins une catégorie.");
+                return;
+            }
+
+            // Convertir les catégories en JSON
+            const categoriesJson = JSON.stringify(categories);
+
+            // Envoyer les données via AJAX
+            fetch('controller/CategoryController.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'categories=' + encodeURIComponent(categoriesJson),
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data); // Afficher la réponse du serveur
+            })
+            .catch(error => console.error('Erreur:', error));
+        }
     </script>
 </body>
 </html>

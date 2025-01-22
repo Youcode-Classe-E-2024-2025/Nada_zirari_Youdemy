@@ -112,19 +112,19 @@ $coursData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Barre de navigation -->
     <nav class="navbar">
         <div class="flex items-center">
-            <img src="../assets/images/logo.png" alt="Logo" class="w-12">
+            <img src="../assets/images/logo.png" alt="Logo" class="w-20">
         </div>
         <div class="space-x-6 items-center">
-            <a href="deconnexion.php" class="text-center font-bold hover:text-gray-400" style="color:#1c4933">log out</a> 
+            <a href="deconnexion.php" class="text-center font-bold hover:text-gray-400" style="color:#833a62">log out</a> 
         </div>
     </nav>
 
     <!-- Contenu des cours -->
     <div class="container px-4">
         <div class="flex justify-between items-center">
-            <h2 class="text-3xl font-bold mb-4" style="color:#1c4933">Tout les cours</h2>
+            <h2 class="text-3xl font-bold mb-4" style="color:#833a62">Tout les cours</h2>
             <div class="flex justify-center gap-5 my-4">
-                <a href="sectionCours.php" style="color: #dadfdc ;background-color:#1c4933;" class="text-white font-bold py-2 px-3 rounded hover:bg-red-600">Mes cours</a>
+                <a href="sectionCours.php" style="color: #dadfdc ;background-color:#833a62;" class="text-white font-bold py-2 px-3 rounded hover:bg-red-600">Mes cours</a>
             </div>
         </div>
 

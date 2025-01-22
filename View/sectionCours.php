@@ -61,11 +61,11 @@ $coursData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <a href="taches_view.php?id_cours=<?php echo $course['id_cours']; ?>">
                         <img class="w-full h-48 object-cover" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="Course Image">
                     </a>
-                    <div class="p-4">
+                    <div class="p-8">
                         <h5 class="text-xl font-bold text-gray-800 mb-2"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
                         <p class="text-gray-600 mb-4"><?php echo htmlspecialchars($course['desc_cours']); ?></p>
                         <div class="flex justify-center">
-                            <a href="detailCours.php?id_cour=<?php echo $course['id_cours']; ?>" class="bg-green-700 text-white font-bold py-2 px-4 rounded hover:bg-green-600">Voir détail</a>
+                            <a href="detailCours.php?id_cour=<?php echo $course['id_cours']; ?>" class="bg-gray-700 text-white font-bold py-2 px-4 rounded hover:bg-green-600"> détail</a>
                         </div>
                     </div>
                 </div>
