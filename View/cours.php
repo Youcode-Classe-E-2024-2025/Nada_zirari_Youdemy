@@ -68,13 +68,13 @@ $totalPages = ceil($totalCours / $limit);
     <div class="main-content container mx-auto px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <?php foreach ($coursData as $course): ?>
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-[#833a62] dark:border-gray-700">
                     <a>
                         <img class="rounded-t-lg" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="" />
                     </a>
                     <div class="p-8">
                         <a>
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:#24508c"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:black"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
                         </a>
                         <p class="mb-3 font-bold text-gray-700 dark:text-gray-400"><?php echo htmlspecialchars($course['desc_cours']); ?></p>
                     </div>

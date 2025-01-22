@@ -223,7 +223,7 @@ $resultats5 = $stmt5->fetchAll();
                     <div class="container p-4">
                         <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
                             <table class="min-w-full table-auto">
-                                <thead class="bg-gray-800 text-white">
+                                <thead class="bg-pink-800 text-white">
                                     <tr>
                                         <th class="px-6 py-4 text-left hidden">#</th>
                                         <th class="px-6 py-4 text-left">Titre</th>
@@ -269,7 +269,7 @@ $resultats5 = $stmt5->fetchAll();
                     <div class="container p-4">
                         <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
                             <table class="min-w-full table-auto">
-                                <thead class="bg-gray-800 text-white">
+                                <thead class="bg-pink-800 text-white">
                                     <tr>
                                         <th class="px-6 py-4 text-left hidden">#</th>
                                         <th class="px-6 py-4 text-left">Nom</th>
@@ -320,7 +320,7 @@ $resultats5 = $stmt5->fetchAll();
                     <div class="container p-4">
                         <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
                             <table class="min-w-full table-auto">
-                                <thead class="bg-gray-800 text-white">
+                                <thead class="bg-pink-800 text-white">
                                     <tr>
                                         <th class="px-6 py-4 text-left hidden">#</th>
                                         <th class="px-6 py-4 text-left">Nom</th>

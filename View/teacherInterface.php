@@ -149,7 +149,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <?php foreach ($coursData as $course): ?>
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-pink-800 dark:border-gray-700">
                         <a href="taches_view.php?id_cours=<?php echo $course['id_cours']; ?>">
                             <img class="rounded-t-lg" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="" />
                         </a>
@@ -225,7 +225,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <!-- Modal pour associer des tag à un cours -->
-        <div class="hidden fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50 mt-10" id="modal2">
+        <div class="hidden fixed inset-0 flex justify-center items-center bg-pink-800 bg-opacity-50 z-50 mt-10" id="modal2">
           <div class="bg-white rounded-lg p-8 w-96 shadow-lg modal-content" style="width:80%;background-color:#dadfdc;border:2px solid #833a62; box-shadow: 0 4px 12px rgba(127, 143, 125, 0.62);">
             <h1 class="text-2xl font-bold text-center mb-4" style="color:#833a62;">Associer des tags</h1>
             <form id="courseForm" action="../controller/associerTagCours.php" method="POST" enctype="multipart/form-data">
