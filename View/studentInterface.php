@@ -114,36 +114,37 @@ $coursData = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="flex items-center">
             <img src="../assets/images/logo.png" alt="Logo" class="w-20">
         </div>
+        <div>
+        <h2 class="text-3xl font-bold mb-4" style="color:#833a62">Tout les cours</h2>
+        </div>
+        <div>
+        <a href="sectionCours.php" style="color: #dadfdc ;background-color:#833a62;" class="text-white font-bold py-2 px-3 rounded hover:bg-red-600">Mes cours</a>
+        </div>
         <div class="space-x-6 items-center">
-            <a href="deconnexion.php" class="text-center font-bold hover:text-gray-400" style="color:#833a62">log out</a> 
+            <a href="deconnexion.php" class="text-center font-bold hover:text-black text-color:black" style=" background-color:red;">log out</a> 
         </div>
     </nav>
 
     <!-- Contenu des cours -->
-    <div class="container px-4">
-        <div class="flex justify-between items-center">
-            <h2 class="text-3xl font-bold mb-4" style="color:#833a62">Tout les cours</h2>
-            <div class="flex justify-center gap-5 my-4">
-                <a href="sectionCours.php" style="color: #dadfdc ;background-color:#833a62;" class="text-white font-bold py-2 px-3 rounded hover:bg-red-600">Mes cours</a>
-            </div>
-        </div>
+    <div class="container px-4 mt-20">
+        
 
         <!-- Affichage des cours -->
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 ml-20">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <?php foreach ($coursData as $course): ?>
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-pink-800 dark:border-gray-700">
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-white ">
                         <a href="taches_view.php?id_cours=<?php echo $course['id_cours']; ?>">
                             <img class="rounded-t-lg" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="" />
                         </a>
                         <div class="p-5">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:#1c4930"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:black"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
                             </a>
                             <p class="mb-3 font-bold text-gray-700 dark:text-gray-400"><?php echo htmlspecialchars($course['desc_cours']); ?></p> 
                             <form class="inline ml-1 flex justify-center" action="../controller/courInscription.php" method="POST">
                                 <input type="hidden"  name="id_cours" value="<?php echo $course['id_cours']; ?>">
-                               <button type="submit" style="color: rgb(187, 214, 211) ;background-color:#1c4930;"  class="text-white text-center font-bold px-2 rounded hover:bg-red-600 w-32 h-12">Inscription</button>
+                               <button type="submit" style="color: rgb(187, 214, 211) ;background-color:black;"  class="text-white text-center font-bold px-2 rounded hover:bg-red-600 w-32 h-12">Inscription</button>
                             </form>
                         </div>
                     </div>

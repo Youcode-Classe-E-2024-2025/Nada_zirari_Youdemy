@@ -57,7 +57,7 @@ $totalPages = ceil($totalCours / $limit);
 
 
     <!-- Formulaire de recherche -->
-    <div class="container mx-auto px-4 py-4 mt-24">
+    <div class="container mx-auto px-4 py-4 ml-80 mt-24">
         <form method="GET" action="Cours.php">
             <input type="text" name="search" class="p-2 border rounded w-[30%]" placeholder="Rechercher un cours par titre..." value="<?php echo htmlspecialchars($searchTerm); ?>">
             <button type="submit" class="p-2 ml-2 text-white rounded" style="background-color:#833a62;">Rechercher</button>
@@ -87,13 +87,13 @@ $totalPages = ceil($totalCours / $limit);
     <div class="container mx-auto px-4 py-4 text-center">
         <div class="flex justify-center space-x-2">
             <?php if ($page > 1): ?>
-                <a href="?search=<?php echo urlencode($searchTerm); ?>&page=<?php echo $page - 1; ?>" class="px-4 py-2 bg-green-900 text-white rounded">Précédent</a>
+                <a href="?search=<?php echo urlencode($searchTerm); ?>&page=<?php echo $page - 1; ?>" class="px-4 py-2 bg-pink-800 text-white rounded">Précédent</a>
             <?php endif; ?>
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a href="?search=<?php echo urlencode($searchTerm); ?>&page=<?php echo $i; ?>" class="px-4 py-2 <?php echo $i == $page ? 'bg-green-900 text-white' : 'bg-gray-300 text-gray-800'; ?> rounded"><?php echo $i; ?></a>
+                <a href="?search=<?php echo urlencode($searchTerm); ?>&page=<?php echo $i; ?>" class="px-4 py-2 <?php echo $i == $page ? 'bg-black text-white' : 'bg-gray-300 text-gray-800'; ?> rounded"><?php echo $i; ?></a>
             <?php endfor; ?>
             <?php if ($page < $totalPages): ?>
-                <a href="?search=<?php echo urlencode($searchTerm); ?>&page=<?php echo $page + 1; ?>" class="px-4 py-2 bg-green-900 text-white rounded">Suivant</a>
+                <a href="?search=<?php echo urlencode($searchTerm); ?>&page=<?php echo $page + 1; ?>" class="px-4 py-2 bg-pink-800 text-white rounded">Suivant</a>
             <?php endif; ?>
         </div>
     </div>

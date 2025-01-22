@@ -36,22 +36,25 @@ $coursData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Cours</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-200">
 
     <!-- Barre de navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-6 py-4">
             <div class="flex items-center">
-                <img src="../assets/images/logo.png" alt="Logo" class="w-12">
+                <img src="../assets/images/logo.png" alt="Logo" class="w-20">
             </div>
             <div>
-                <a href="deconnexion.php" class="text-lg font-bold text-green-700 hover:text-green-500">Log Out</a>
+                <a href="deconnexion.php" class="text-lg font-bold text-red-600 hover:text-green-500">Log Out</a>
+            </div>
+            <div>
+            <a href="studentInterface.php" class="text-lg font-bold text-pink-800 hover:text-green-500">Retour aux cours principales</a>
             </div>
         </div>
     </nav>
-
+    
     <!-- Contenu des cours -->
-    <div class="container mx-auto px-6 py-8">
+    <div class="container mx-auto px-6 py-8 bg-gray-200">
         <h2 class="text-3xl font-bold text-green-700 mb-6">Mes cours</h2>
 
         <!-- Affichage des cours -->

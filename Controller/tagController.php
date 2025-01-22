@@ -9,8 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données envoyées (tags en format JSON)
     if (isset($_POST['tags'])) {
         $tagsJson = $_POST['tags'];
-        $tags = json_decode($tagsJson, true); // Convertir le JSON en tableau PHP
-
+        $tags = explode(',',$tagsJson);
+        // $tags = json_decode($tagsJson); // Convertir le JSON en tableau PHP
+        // var_dump($tags);die;
         if (is_array($tags) && !empty($tags)) {
             // Démarrer une transaction pour garantir l'intégrité des données
             $pdo->beginTransaction();
@@ -18,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 // 1. Insérer ou mettre à jour les tags dans la table 'tags'
                 foreach ($tags as $tag) {
-                    if (!empty($tag['value'])) { // Vérifier que le champ 'value' n'est pas vide
-                        $tagName = trim($tag['value']); // Enlever les espaces inutiles
+                    // Vérifier que le champ 'value' n'est pas vide
+                        $tagName = trim($tag); // Enlever les espaces inutiles
 
                         // Créer ou mettre à jour le tag
                         $tagObj = new Tag($pdo, $tagName);
                         $tagObj->save(); // Insertion ou mise à jour du tag
-                    }
+                    
                 }
 
                 // 2. Associations des tags à un cours ou à un autre objet (si nécessaire)
@@ -43,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Commit de la transaction
                 $pdo->commit();
                 echo "Tags associés au cours avec succès.";
+                header('Location: /Nada_zirari_Youdemy-1//view/AdminDashboard.php');
             } catch (Exception $e) {
                 // En cas d'erreur, annuler la transaction
                 $pdo->rollBack();

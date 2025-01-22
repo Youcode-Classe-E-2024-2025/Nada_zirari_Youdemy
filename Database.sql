@@ -48,15 +48,6 @@ CREATE TABLE cours (
         name_tags VARCHAR(100) NOT NULL UNIQUE
     );
 -- Insertion d'une catégorie
-INSERT INTO categories (name_categorie) 
-VALUES ('Marketnig');
-INSERT INTO categories (name_categorie) 
-VALUES ('Design');
--- Insertion d'un tag
-INSERT INTO tags (name_tags) 
-VALUES ('JAVA');
-INSERT INTO tags (name_tags) 
-VALUES ('python');
 
 -- Table many-to-many entre les cours et les tags
 CREATE TABLE cours_tags (

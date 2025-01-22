@@ -8,33 +8,35 @@ require_once '../model/Categorie.php';  // Inclusion du modèle Category
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données envoyées (catégories en format JSON)
     if (isset($_POST['categories'])) {
-        $categoriesJson = $_POST['categories'];
-        $categories = json_decode($categoriesJson, true); // Convertir le JSON en tableau PHP
+        $categories = $_POST['categories'];
+        // $categories = json_decode($categoriesJson); // Convertir le JSON en tableau PHP
+        // var_dump($categoriesJson);die;
 
-        if (is_array($categories) && !empty($categories)) {
+        if (!empty($categories)) {
             // Démarrer une transaction pour garantir l'intégrité des données
             $pdo->beginTransaction();
 
-            try {
-                // 1. Insérer ou mettre à jour les catégories dans la table 'categories'
-                foreach ($categories as $category) {
-                    if (!empty($category['value'])) { // Vérifier que le champ 'value' n'est pas vide
-                        $categoryName = trim($category['value']); // Enlever les espaces inutiles
+            // try {
+            //     // 1. Insérer ou mettre à jour les catégories dans la table 'categories'
+            //     foreach ($categories as $category) {
+            //         if (!empty($category['value'])) { // Vérifier que le champ 'value' n'est pas vide
+            //             $categoryName = trim($category['value']); // Enlever les espaces inutiles
 
                         // Créer ou mettre à jour la catégorie
-                        $categoryObj = new Category($pdo, $categoryName);
+                        $categoryObj = new Category($pdo, $categories);
                         $categoryObj->save(); // Insertion ou mise à jour de la catégorie
-                    }
-                }
+                        header('Location: /Nada_zirari_Youdemy-1//view/AdminDashboard.php');
+                //     }
+                // }
 
                 // Commit de la transaction
                 $pdo->commit();
                 echo "Catégories ajoutées avec succès.";
-            } catch (Exception $e) {
-                // En cas d'erreur, annuler la transaction
-                $pdo->rollBack();
-                echo "Erreur lors de l'ajout des catégories : " . $e->getMessage();
-            }
+            // } catch (Exception $e) {
+            //     // En cas d'erreur, annuler la transaction
+            //     $pdo->rollBack();
+            //     echo "Erreur lors de l'ajout des catégories : " . $e->getMessage();
+            // }
         } else {
             echo "Aucune catégorie valide n'a été envoyée.";
         }

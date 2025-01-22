@@ -86,7 +86,7 @@ if (isset($_GET['id_cour'])) {
            YOUDEMY
         </div>
         <div class="space-x-6 items-center">
-        <a href="teacherInterface.php" class="text-center font-bold hover:text-gray-400" style="color:#1c4930">Retour aux cours</a>
+        <a href="sectionCours.php" class="text-center font-bold hover:text-gray-400" style="color:#1c4930">Retour aux cours</a>
         </div>
     </nav>
     <div class="container mx-auto p-6">

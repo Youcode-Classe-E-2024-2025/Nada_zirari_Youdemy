@@ -10,11 +10,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-blue-900 flex justify-center items-center h-screen">
+<body class="bg-pink-800 flex justify-center items-center h-screen">
 
     <!-- Formulaire de connexion -->
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-3xl font-bold text-center text-black mb-6">Bienvenue sur Youdemy</h2>
+        <h2 class="text-3xl font-bold text-center text-pink-800 mb-6">Bienvenue sur Youdemy</h2>
         <form id="loginForm" action="../controller/loginController.php" method="POST" onsubmit="return validateLoginForm()">
                     <div class="mb-4">
                         <label for="email" class="block text-black">Email:</label>

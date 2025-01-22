@@ -12,10 +12,10 @@ $role = isset($_GET['role']) ? $_GET['role'] : null;
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../assets/register.js"></script>
 </head>
-<body class="bg-blue-900 flex justify-center items-center min-h-screen">
+<body class="bg-pink-800 flex justify-center items-center min-h-screen">
 
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-semibold text-center text-blue-500 mb-6">Inscription</h2>
+        <h2 class="text-2xl font-semibold text-center text-pink-800 mb-6">Inscription</h2>
         
         <?php if (!empty($error)) : ?>
             <div class="text-red-500 text-sm mb-4"><?php echo $error; ?></div>
