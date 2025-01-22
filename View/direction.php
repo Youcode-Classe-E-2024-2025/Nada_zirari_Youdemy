@@ -19,9 +19,9 @@
         }
 
         .choix {
-            height: 250px;
-            width: 250px;
-            padding: 10px;
+            height: 100px;
+            width: 100px;
+            
             border-radius: 100px;
             background-color: #833a62;
             text-align: center;
@@ -52,8 +52,9 @@
     <main class="py-24 bg-gradient-to-r to-indigo-600" style="color:#833a62;">
         <div class="flex justify-center gap-20 mx-64 py-24">
             <!-- Choix Etudiant -->
+            <h1 class="text-gray font-bold">CHOISIR TA FONCTIONNALITE :</h1>
             <div class="choix">
-            <h2 class="text-black">etudiant</h2>
+            <h2 class="text-black font-bold">etudiant</h2>
                   
                     <div><a href="register.php?role=etudiant" class="font-bold">Étudiant</a></div>
                 </a>
@@ -61,7 +62,7 @@
             <!-- Choix Enseignant -->
             <div class="choix">
                 <a href="register.php?role=enseignant">
-                    <h2 class="text-black">Enseignant</h2>
+                    <h2 class="text-black font-bold">Enseignant</h2>
                      <!-- alt="Enseignant"> -->
                     <div><a href="register.php?role=enseignant" class="font-bold">Enseignant</a></div>
                 </a>

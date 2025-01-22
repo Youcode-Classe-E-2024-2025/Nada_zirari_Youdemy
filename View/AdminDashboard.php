@@ -57,6 +57,11 @@ $row = $stmt3->fetch();
 // $titreCours = $resultat4['titre_cours'];
 // $nombreEtudiants = $resultat4['nombre_etudiants'];
 
+// Requête pour récupérer le nombre total d'étudiants
+// $query_etudiants = "SELECT COUNT(*) AS total_etudiants FROM etudiants";
+// $result_etudiants = $pdo->query($query_etudiants);
+// $row_etudiants = $result_etudiants->fetch();
+// $total_etudiants = $row_etudiants['total_etudiants'];
 
 //   Les Top 3 enseignants 
 $stmt5 = $pdo->prepare("SELECT u.id_user, u.user_name, COUNT(DISTINCT co.id_cours) AS total_cours, COUNT(DISTINCT i.id_user) AS total_etudiants
@@ -104,11 +109,11 @@ $resultats5 = $stmt5->fetchAll();
             <div class="rounded-tr-3xl bg-gray-500 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
                 <div class="md:mt-20 md:w-48 md:fixed md:left-0 md:top-10 content-center md:content-start text-left justify-between">
                     <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
-                        <!-- <li class="mr-3 flex-1">
+                        <li class="mr-3 flex-1">
                             <a href="#" onclick="showSection('analytics')" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
-                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Analytics</span>
+                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Statistiques</span>
                             </a>
-                        </li> -->
+                        </li>
                         <li class="mr-3 flex-1">
                             <a href="#" onclick="showSection('cours')" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                                 <i class="fa-solid fa-book pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Cours</span>
@@ -144,7 +149,7 @@ $resultats5 = $stmt5->fetchAll();
             <div id="main" class="main-content flex-1 bg-gray-100 ml-8 md:mt-2 pb-24 md:pb-5" style="margin-top:40px ; min-width:100%;">
                 <div class="pt-3" style="background-color:rgb(93, 14, 51);">
                     <div class=" bg-pink-900 p-4 shadow text-2xl text-white">
-                        <h1 class="font-bold pl-2">Analytics</h1>
+                        <h1 class="font-bold pl-2">Statistiques</h1>
                     </div>
                 </div>
 
@@ -204,10 +209,7 @@ $resultats5 = $stmt5->fetchAll();
                 </div>
 
 
-                <h2 class="text-center mt-[30px]">Graphiques : Distribution des cours, Professeurs et Etudiants</h2>
-                <section class="flex mt-[80px] justify-center">
-                   <canvas id="pieChart" style="width:50%;max-width:400px;"></canvas>
-                </section>
+              
            </div>
         </section>
 
@@ -244,7 +246,7 @@ $resultats5 = $stmt5->fetchAll();
                                         <td class="px-6 py-4">
                                             <form method="POST" action="../controller/supprimer_courAdmin.php" class="inline ml-2">
                                               <input type="hidden" name="cours_id" value="<?php echo $course['id_cours']; ?>" />
-                                              <button type="submit" name="supprimer" class="text-red-500 hover:text-red-700 ml-2"><i class="fa-solid fa-trash"></i></button>
+                                              <button type="submit" name="supprimer" class="text-red-500 hover:text-red-700 ml-2">supprimer</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -288,13 +290,13 @@ $resultats5 = $stmt5->fetchAll();
                                         <td class="px-6 py-4">
                                             <form method="POST" action="../controller/confirmationUser.php" class="inline ml-2">
                                                    <input type="hidden" name="user_id" value="<?php echo $prof['id_user']; ?>" />
-                                                   <button type="submit" name="changer" style="background-color:rgb(185, 212, 243);" onclick="return confirm('Êtes-vous sûr de vouloir changer le statut de cet utilisateur ?')"
-                                                    class="text-white py-2 px-3 rounded hover:bg-red-600">edit</i></button>
+                                                   <button type="submit" name="changer" style="background-color:rgb(5, 50, 100);" onclick="return confirm('Êtes-vous sûr de vouloir changer le statut de cet utilisateur ?')"
+                                                    class="text-white py-2 px-3 rounded hover:bg-red-600">changer statut</i></button>
                                             </form>
                                             <form method="POST" action="../controller/supprimerProf.php" class="inline ml-2">
                                                     <input type="hidden" name="user_id" value="<?php echo $prof['id_user']; ?>" />
-                                                    <button type="submit" name="supprimer" style="background-color:rgb(185, 212, 243);"  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')"
-                                                     class="text-white py-2 px-3 rounded hover:bg-red-600">supp</button>
+                                                    <button type="submit" name="supprimer" style="background-color:rgb(212, 21, 21);"  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')"
+                                                     class="text-white py-2 px-3 rounded hover:bg-red-600">suprimer</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -342,13 +344,13 @@ $resultats5 = $stmt5->fetchAll();
 
                                             <form method="POST" action="../controller/activationUser.php" class="inline ml-2">
                                                    <input type="hidden" name="user_id" value="<?php echo $user['id_user']; ?>" />
-                                                   <button type="submit" name="changer" style="background-color:rgb(185, 212, 243);" onclick="return confirm('Êtes-vous sûr de vouloir de déactiver ou activer cet utilisateur ?')"
+                                                   <button type="submit" name="changer" style="background-color:rgb(36, 109, 192);" onclick="return confirm('Êtes-vous sûr de vouloir de déactiver ou activer cet utilisateur ?')"
                                                     class="text-white py-2 px-3 rounded hover:bg-red-600">Active/desactive</button>
                                             </form>
                                             <form method="POST" action="../controller/supprimerUser.php" class="inline ml-2">
                                                     <input type="hidden" name="user_id" value="<?php echo $user['id_user']; ?>" />
-                                                    <button type="submit" name="supprimer" style="background-color:rgb(185, 212, 243);" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')"
-                                                     class="text-white py-2 px-3 rounded hover:bg-red-600">supp</button>
+                                                    <button type="submit" name="supprimer" style="background-color:rgb(198, 41, 41);" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')"
+                                                     class="text-white py-2 px-3 rounded hover:bg-red-600">supprimer</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -368,7 +370,7 @@ $resultats5 = $stmt5->fetchAll();
                     <div class="pt-3" style="background-color: #dadfdc;">
                         <div class="flex justify-between rounded-tl-3xl rounded-tr-3xl bg-pink-900 p-4 shadow text-2xl text-white">
                             <h1 class="font-bold pl-2">Tags</h1>
-                            <button class="pl-2 bg-black">Ajouter tags</button>
+                            <!-- <button class="pl-2 bg-black">Ajouter tags</button> -->
                         </div>
                     </div>
                     <div>

@@ -26,7 +26,19 @@ $stmt->execute([$id_user]);
 $resultat = $stmt->fetch();
 $totalCours = $resultat['total_cours'];
 
+
+
+// Nombre total d'étudiants inscrits
+$query_etudiants = "SELECT COUNT(DISTINCT id_user) AS total_etudiants FROM inscription";
+$result_etudiants = $pdo->query($query_etudiants);
+$total_etudiants = $result_etudiants->fetch()['total_etudiants'];
+
+// Nombre total de cours
+$query_cours = "SELECT COUNT(*) AS total_cours FROM cours";
+$result_cours = $pdo->query($query_cours);
+$total_cours = $result_cours->fetch()['total_cours'];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,67 +84,29 @@ $totalCours = $resultat['total_cours'];
         <div class="flex items-center">
             <img src="../assets/images/logo.png" alt="Logo" class="w-12">
         </div>
+        <h2 class="text-center text-2xl font-bold mt-[20px]" style="color:rgb(100, 43, 66)"> Statistiques Cours et Etudiant</h2>
         <div class="space-x-6 items-center">
         <a href="teacherInterface.php" class="text-center font-bold hover:text-gray-400" style="color:#1c4930">Retour aux cours</a>
         </div>
     </nav>
 
 
-<h2 class="text-center font-bold mt-[30px]" style="color:#1c4930">Graphiques : Statistiques Cours et Etudiant</h2>
-<section class="flex mt-[80px] justify-center">
-    <canvas id="pieChart" style="width:100%;max-width:600px;">
-    </canvas>
-    <canvas id="barChart" style="width:100%;max-width:600px;"></canvas>
-</section>
 
-<script>
-    // Récupérer les données PHP dans JavaScript
-    var xValues = ['Etudiants', 'Cours'];
-    var yValues = [<?php echo $totalEtudiants; ?>, <?php echo $totalCours; ?>];
-    var barColors = ['blue', 'yellow'];
-
-    // Affichage du graphique en camembert (pie chart)
-    new Chart("pieChart", {
-        type: "pie",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "Statistiques Cours et Etudiant (Camembert)"
-            }
-        }
-    });
-
-    // Affichage du graphique en barres (bar chart)
-    new Chart("barChart", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "Statistiques Cours et Etudiant (Barres)"
-            },
-            legend: { display: false },
-            scales: {
-                yAxes: [{
-                    ticks: { beginAtZero: true }
-                }]
-            }
-        }
-    });
-</script>
+<div class="w-full md:w-1/2 xl:w-1/3 p-6">
+    <div class="bg-yellow-200 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
+        <div class="flex flex-row items-center">
+            <div class="flex-shrink pr-4">
+                <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
+            </div>
+            <div class="flex-1 text-right md:text-center">
+                <h2 class="font-bold uppercase text-gray-600">Nombre total de cours</h2>
+                <p><?php echo $total_cours . ' cours'; ?></p>
+                <h2 class="font-bold uppercase text-gray-600 mt-2">Nombre total d'étudiants inscrits</h2>
+                <p><?php echo $total_etudiants . ' étudiants'; ?></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

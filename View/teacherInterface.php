@@ -124,7 +124,8 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Barre de navigation -->
     <nav class="navbar">
         <div class="flex items-center">
-           HELLO TEACHER ! WELCOME TO YOUDEMY
+        <h2 class="text-center text-2xl font-bold mt-[20px]" style="color:rgb(100, 43, 66)">  HELLO TEACHER ! WELCOME TO YOUDEMY</h2>
+       
         </div>
         <div class="space-x-6 items-center">
             <i class="fa-duotone fa-solid fa-gear gear-icon" style="color:#833a62;font-size:25px;" onclick="toggleMenu()"></i>
