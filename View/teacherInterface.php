@@ -146,7 +146,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
 
-        <!-- Affichage des cours -->
+        <!-- Affichage dees cours -->
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <?php foreach ($coursData as $course): ?>
