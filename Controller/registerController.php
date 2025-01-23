@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validation côté serveur
 
     // Vérifier si tous les champs obligatoires sont remplis
-    // if (empty($nom_user) || empty($email_user) || empty($password_user) || empty($confirm_password_user) || empty($role_user)) {
-    //     echo "Tous les champs sont requis.";
-    //     exit;
-    // }
+    if (empty($nom_user) || empty($email_user) || empty($password_user) || empty($confirm_password_user) || empty($role_user)) {
+        echo "Tous les champs sont requis.";
+        exit;
+    }
 
     // Vérification du format de l'email
     if (!filter_var($email_user, FILTER_VALIDATE_EMAIL)) {

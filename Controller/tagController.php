@@ -6,12 +6,10 @@ require_once '../model/tag.php';  // Inclusion du modèle Tag
 
 // Traitement de l'ajout de tags via formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données envoyées (tags en format JSON)
+    // Récupérer les données envoyées 
     if (isset($_POST['tags'])) {
         $tagsJson = $_POST['tags'];
         $tags = explode(',',$tagsJson);
-        // $tags = json_decode($tagsJson); // Convertir le JSON en tableau PHP
-        // var_dump($tags);die;
         if (is_array($tags) && !empty($tags)) {
             // Démarrer une transaction pour garantir l'intégrité des données
             $pdo->beginTransaction();

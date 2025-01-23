@@ -7,8 +7,8 @@ require_once '../model/cours.php';
 require_once '../model/categorie.php';
 
 // Vérifier si un ID de cours est passé dans l'URL
-if (isset($_GET['id_cour'])) {
-    $cours_id = $_GET['id_cour'];
+if (isset($_GET['id_cours'])) {
+    $cours_id = $_GET['id_cours'];
 
     // Récupérer les détails du cours depuis la base de données
     $stmt = $pdo->prepare('SELECT * FROM cours WHERE id_cours = ?');

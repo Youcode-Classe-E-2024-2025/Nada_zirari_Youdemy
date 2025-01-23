@@ -151,12 +151,12 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <?php foreach ($coursData as $course): ?>
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-pink-800 dark:border-gray-700">
-                        <a href="taches_view.php?id_cours=<?php echo $course['id_cours']; ?>">
+                        <a href="detailcours.php?id_cours=<?php echo $course['id_cours']; ?>">
                             <img class="rounded-t-lg" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="" />
                         </a>
                         <div class="p-5">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:#833a62"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style="color:black"><?php echo htmlspecialchars($course['titre_cours']); ?></h5>
                             </a>
                             <p class="mb-3 font-bold text-gray-700 dark:text-gray-400"><?php echo htmlspecialchars($course['desc_cours']); ?></p>
                             <form method="POST" action="modifier_cours.php?id_cour=<?php echo $course['id_cours']; ?>" class="inline ml-2">
@@ -168,7 +168,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <button type="submit" name="supprimer" style="color: #833a62 ;background-color:#dadfdc;" class="text-white py-2 px-3 rounded hover:bg-red-600"><i class="fa-solid fa-trash"></i></button>
                             </form>
                             <form class="inline ml-1">
-                               <a href="detailCours.php?id_cour=<?php echo $course['id_cours']; ?>" style="color: #833a62 ;background-color:#dadfdc;"  class="text-white font-bold p-2 px-2 rounded hover:bg-red-600 w-24 h-24"> détail</a>
+                            <a href="detailcours.php?id_cours=<?php echo $course['id_cours']; ?>" style="color: #833a62 ;background-color:#dadfdc;" class="text-white font-bold p-2 px-2 rounded hover:bg-red-600 w-24 h-24"> détail</a>
                             </form>
                         </div>
                     </div>
@@ -188,7 +188,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
          
                  <div class="mb-4">
                      <label for="image_cours" class="block text-sm font-bold text-gray-700">Image (optionnelle) :</label>
-                     <input type="text" name="image_cours" id="image_cours" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800">
+                     <input type="text" name="image_cours" accept="image/*" id="image_cours" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800">
                  </div>
          
                  <div class="mb-4">

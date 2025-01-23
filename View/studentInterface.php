@@ -134,8 +134,8 @@ $coursData = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <?php foreach ($coursData as $course): ?>
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-white ">
-                        <a href="taches_view.php?id_cours=<?php echo $course['id_cours']; ?>">
-                            <img class="rounded-t-lg" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="" />
+                    <a href="detailcours.php?id_cours=<?php echo $course['id_cours']; ?>">
+                    <img class="rounded-t-lg" src="<?php echo htmlspecialchars($course['image_cours']); ?>" alt="" />
                         </a>
                         <div class="p-5">
                             <a href="#">

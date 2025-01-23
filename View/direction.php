@@ -23,11 +23,11 @@
             width: 100px;
             
             border-radius: 100px;
-            background-color: #833a62;
+           
             text-align: center;
             border-top: 1px solid #dadfdc;
             border-left: 1px solid #dadfdc;
-            box-shadow: 12px 12px 12px rgba(106, 134, 109, 0.54); /* Ombre */
+          
             transition: transform 0.3s ease; /* Transition pour l'animation */
             opacity: 0; /* Initialement caché */
             transform: scale(0.8); /* Commence plus petit */
@@ -49,24 +49,31 @@
     include_once 'header.php';
     ?>
 
-    <main class="py-24 bg-gradient-to-r to-indigo-600" style="color:#833a62;">
+    <main class="py-24 bg-gradient-to-r to-indigo-600">
         <div class="flex justify-center gap-20 mx-64 py-24">
             <!-- Choix Etudiant -->
-            <h1 class="text-gray font-bold">CHOISIR TA FONCTIONNALITE :</h1>
-            <div class="choix">
-            <h2 class="text-black font-bold">etudiant</h2>
-                  
-                    <div><a href="register.php?role=etudiant" class="font-bold">Étudiant</a></div>
-                </a>
+            <h1 class="text-gray font-bold text-center mb-6">CHOISIR TA FONCTIONNALITÉ :</h1>
+
+<div class="flex justify-center gap-8">
+    <!-- Choix Étudiant -->
+    <div class="choix text-center">
+        <a href="register.php?role=etudiant" class="block">
+            <div class="bg-blue-500 p-4 rounded-lg">
+                <h2 class="text-white font-bold">Étudiant</h2>
             </div>
-            <!-- Choix Enseignant -->
-            <div class="choix">
-                <a href="register.php?role=enseignant">
-                    <h2 class="text-black font-bold">Enseignant</h2>
-                     <!-- alt="Enseignant"> -->
-                    <div><a href="register.php?role=enseignant" class="font-bold">Enseignant</a></div>
-                </a>
+        </a>
+    </div>
+
+    <!-- Choix Enseignant -->
+    <div class="choix text-center">
+        <a href="register.php?role=enseignant" class="block">
+            <div class="bg-green-500 p-5 rounded-lg">
+                <h2 class="text-white font-bold">prof</h2>
             </div>
+        </a>
+    </div>
+</div>
+
         </div>
     </main>
 

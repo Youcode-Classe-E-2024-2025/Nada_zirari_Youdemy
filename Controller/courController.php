@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_FILES['videoFile']) && $_FILES['videoFile']['error'] === UPLOAD_ERR_OK) {
         // Si une vidéo est uploadée
 
-        // Vérifier l'extension du fichier vidéo (optionnel mais recommandé)
+        // Vérifier l'extension du fichier vidéo 
         $allowed_types = ['mp4', 'avi', 'mov', 'mkv'];
         $video_file_type = pathinfo($_FILES['videoFile']['name'], PATHINFO_EXTENSION);
 
