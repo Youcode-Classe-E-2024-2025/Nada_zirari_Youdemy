@@ -242,7 +242,7 @@ $resultats5 = $stmt5->fetchAll();
                                         <td class="px-6 py-4"><?php echo htmlspecialchars($course['titre_cours']); ?></td>
                                         <td class="px-6 py-4"><?php echo htmlspecialchars($course['desc_cours']); ?></td>
                                         <td class="px-6 py-4"><?php echo htmlspecialchars($course['desc_cours']); ?></td>
-                                        <td class="px-6 py-4">Paris</td>
+                                        <td class="px-6 py-4">php</td>
                                         <td class="px-6 py-4">
                                             <form method="POST" action="../controller/supprimer_courAdmin.php" class="inline ml-2">
                                               <input type="hidden" name="cours_id" value="<?php echo $course['id_cours']; ?>" />

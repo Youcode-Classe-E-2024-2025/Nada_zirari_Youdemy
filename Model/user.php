@@ -54,7 +54,7 @@ class user{
 public function registerUser($db) {
     // Hash du mot de passe
 
-    // Si l'utilisateur est un enseignant, on laisse is_valid = 0 (en attente de validation)
+    // Si l'utilisateur est un enseignant, je laisse is_valid = 0 (en attente de validation)
     if ($this->role_user == 'enseignant') {
         $this->is_valid = 0; // L'utilisateur enseignant est en attente de validation
     } else {
